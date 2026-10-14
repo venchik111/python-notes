@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f6">
+  <meta name="description" content="Короткие памятки по Python: уроки, примеры, частые ошибки и поиск по всей базе знаний.">
+  <title>Python · заметки</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к материалам</a>
+  <header class="header">
+    <a class="brand" href="#" aria-label="Python заметки — все уроки"><span class="brand-mark" aria-hidden="true">py.</span><span>Python <span class="brand-note">/ заметки</span></span></a>
+    <div class="search-wrap" role="search">
+      <svg class="search-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+      <label class="sr-only" for="search">Поиск по всей базе</label>
+      <input id="search" type="search" placeholder="Найти тему, команду или ошибку…" autocomplete="off" spellcheck="false" aria-controls="content">
+      <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+    </div>
+    <button class="menu-button" id="menu-button" type="button" aria-controls="sidebar" aria-expanded="false">Уроки <span aria-hidden="true">☰</span></button>
+  </header>
+  <button class="backdrop" id="backdrop" type="button" aria-label="Закрыть список уроков" hidden></button>
+  <aside class="sidebar" id="sidebar" aria-label="Уроки">
+    <div class="sidebar-top"><span class="eyebrow">База знаний</span><button class="close-menu" id="close-menu" type="button" aria-label="Закрыть список уроков">×</button></div>
+    <nav id="lesson-nav" aria-label="Навигация по урокам"></nav>
+    <div class="sidebar-footer"><span id="base-count">Читаем материалы…</span><span>Коротко. С примерами.</span></div>
+  </aside>
+  <main id="content" tabindex="-1" aria-busy="true"><p class="loading" role="status">Загружаем памятки…</p></main>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript>Для поиска и просмотра памяток включите JavaScript.</noscript>
+</body>
+</html>

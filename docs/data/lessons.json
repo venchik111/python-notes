@@ -1,0 +1,1872 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-14",
+  "title": "Python · заметки",
+  "modules": [
+    {
+      "id": "m2",
+      "number": 2,
+      "title": "Разработка на Python"
+    },
+    {
+      "id": "m3",
+      "number": 3,
+      "title": "Библиотеки для Python разработчика"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "260175",
+      "moduleId": "m2",
+      "number": "8.1",
+      "title": "Установка программ",
+      "kind": "lesson",
+      "summary": "Интерпретатор выполняет код, PyCharm помогает его писать, Poetry управляет зависимостями, Git хранит историю.",
+      "sources": [
+        {
+          "title": "2 План урока",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/2"
+        },
+        {
+          "title": "4 Windows",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/4"
+        },
+        {
+          "title": "5 macOS",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/5"
+        },
+        {
+          "title": "6 Ubuntu",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/6"
+        },
+        {
+          "title": "7 Знакомимся с PyCharm",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/7"
+        },
+        {
+          "title": "8 Проверка готовности",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260175/theory/8"
+        }
+      ],
+      "topics": [
+        {
+          "id": "tools",
+          "title": "Четыре инструмента",
+          "when": "Перед началом работы с проектом.",
+          "rule": "Python — запуск кода; PyCharm — редактор и отладчик; Poetry — окружение и пакеты; Git — версии файлов.",
+          "code": "python --version\npython -m pip --version\npoetry --version\ngit --version",
+          "language": "bash",
+          "error": "Команды запускают в Terminal, а выражения Python — в Python Console.",
+          "details": [
+            "На macOS и Linux команда интерпретатора часто называется python3. На Windows также доступен py -3.",
+            "Проверь, что PyCharm выбрал тот же интерпретатор, который используется в терминале."
+          ],
+          "terms": [
+            "установка",
+            "installation",
+            "интерпретатор",
+            "IDE"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "platform",
+          "title": "Установка: Windows, macOS, Ubuntu",
+          "when": "Когда готовишь рабочую среду.",
+          "rule": "Выбери инструкцию для своей ОС; затем проверь версии и интерпретатор проекта.",
+          "code": "# macOS: после установки Homebrew\nbrew install python git\n# Ubuntu\nsudo apt update\nsudo apt install python3 python3-pip python3-venv git",
+          "language": "bash",
+          "error": "Не смешивай системные пакеты и зависимости проекта: последние устанавливай в виртуальное окружение.",
+          "details": [
+            "Windows: установи Python с python.org, включи добавление в PATH; PyCharm — с сайта JetBrains, Git — с git-scm.com.",
+            "macOS: для инструментов командной строки используется xcode-select --install; Homebrew устанавливается по инструкции brew.sh.",
+            "Poetry устанавливай по официальной инструкции python-poetry.org/docs/#installation. Установщик самого Poetry и окружение проекта — разные вещи."
+          ],
+          "terms": [
+            "PATH",
+            "Homebrew",
+            "Xcode",
+            "Ubuntu",
+            "Windows",
+            "macOS"
+          ],
+          "check": "compile",
+          "references": [
+            {
+              "title": "Установка Poetry",
+              "url": "https://python-poetry.org/docs/#installation"
+            }
+          ]
+        },
+        {
+          "id": "pycharm",
+          "title": "PyCharm: где что делать",
+          "when": "Когда создаёшь или запускаешь проект.",
+          "rule": "New Project → расположение → интерпретатор/окружение. Project — файлы, Terminal — команды ОС, Python Console — выражения, Run — вывод программы.",
+          "code": "print(\"Среда готова\")",
+          "language": "python",
+          "error": "Кнопка Run запускает выбранную конфигурацию; это может быть другой файл.",
+          "details": [
+            "Создание файла: Project → нужная папка → New → Python File. Запуск: контекстное меню файла → Run.",
+            "Пакеты и интерпретатор доступны в настройках проекта, горячие клавиши — в Keymap. Названия разделов зависят от версии PyCharm."
+          ],
+          "terms": [
+            "Run",
+            "Terminal",
+            "Console",
+            "PyCharm",
+            "редактор"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260176",
+      "moduleId": "m2",
+      "number": "8.2",
+      "title": "Модули и пакеты. Организация собственного проекта",
+      "kind": "lesson",
+      "summary": "Разделяй код на модули, изолируй зависимости и открывай файлы через with с явной кодировкой.",
+      "sources": [
+        {
+          "title": "14 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260176/theory/14"
+        },
+        {
+          "title": "15 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260176/theory/15"
+        }
+      ],
+      "topics": [
+        {
+          "id": "imports",
+          "title": "Модуль, пакет и импорт",
+          "when": "Чтобы разделить код и использовать его повторно.",
+          "rule": "Модуль — файл .py; обычный пакет — каталог с __init__.py. Импортируй модуль целиком или нужное имя.",
+          "code": "import os\nfrom os.path import join\npath = join(\"data\", \"orders.json\")",
+          "language": "python",
+          "error": "Не называй свой файл os.py, json.py или requests.py: он может перекрыть библиотеку.",
+          "details": [
+            "Абсолютный импорт начинается с имени пакета: from src.utils import load. Относительный — с точки: from .utils import load; он работает в контексте пакета.",
+            "import * скрывает происхождение имён. Циклические импорты часто устраняются переносом общих функций в отдельный модуль.",
+            "Библиотека объединяет инструменты; зависимость — пакет, от которого зависит проект. PyPI — каталог публикуемых пакетов."
+          ],
+          "terms": [
+            "import",
+            "from",
+            "module",
+            "package",
+            "циклический импорт"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "venv",
+          "title": "Виртуальное окружение и pip",
+          "when": "Когда у разных проектов разные зависимости.",
+          "rule": "Окружение содержит отдельный интерпретатор и пакеты. python -m pip устанавливает пакет для выбранного Python.",
+          "code": "python -m venv .venv\n# Bash: Linux / macOS\nsource .venv/bin/activate\npython -m pip install requests\ndeactivate",
+          "language": "bash",
+          "error": "Установка пакета в другое окружение не исправит ModuleNotFoundError в текущем.",
+          "details": [
+            "Windows PowerShell: .venv\\Scripts\\Activate.ps1; cmd: .venv\\Scripts\\activate.bat.",
+            "pip install package==1.2.3 фиксирует версию; install --upgrade обновляет; uninstall удаляет; list и show показывают сведения.",
+            "python -m pip freeze > requirements.txt сохраняет версии; python -m pip install -r requirements.txt устанавливает их."
+          ],
+          "terms": [
+            "venv",
+            "virtualenv",
+            "pip",
+            "requirements",
+            "ModuleNotFoundError",
+            "активация"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "paths",
+          "title": "Пути и библиотека os",
+          "when": "Когда файл находится вне текущей папки.",
+          "rule": "Относительный путь отсчитывается от рабочей директории, а не от расположения скрипта.",
+          "code": "import os\nbase = os.path.dirname(os.path.abspath(__file__))\npath = os.path.join(base, \"data\", \"orders.json\")",
+          "language": "python",
+          "error": "Абсолютная часть пути в os.path.join отбросит предыдущие части. Не начинай data/orders.json со слеша.",
+          "details": [
+            "getcwd() — рабочая папка; listdir(path) — имена содержимого; walk(path) — обход вложенных папок.",
+            "dirname(path) — родительская папка; basename(path) — имя; exists(path) и isdir(path) — проверки.",
+            "os.name описывает семейство ОС. os.environ — переменные окружения; os.getenv(\"NAME\") читает значение или возвращает None.",
+            "При FileNotFoundError проверь getcwd(), полный путь и существование файла. __file__ обычно отсутствует в интерактивной консоли."
+          ],
+          "terms": [
+            "os",
+            "path",
+            "__file__",
+            "FileNotFoundError",
+            "папки",
+            "файлы"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "files",
+          "title": "Чтение и запись файлов",
+          "when": "Когда нужно сохранить или загрузить текст.",
+          "rule": "with закрывает файл даже при исключении. Для текста указывай encoding=\"utf-8\".",
+          "code": "with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"Привет\\n\")\nwith open(\"notes.txt\", encoding=\"utf-8\") as file:\n    text = file.read()",
+          "language": "python",
+          "error": "Режим w стирает старое содержимое; a дописывает в конец.",
+          "details": [
+            "r — чтение существующего файла; w — создать/перезаписать; a — дописать; r+ — читать и писать существующий файл. b добавляет бинарный режим.",
+            "read() читает всё, readline() — одну строку, readlines() — список строк. Для большого файла перебирай строки в цикле.",
+            "write() принимает строку и не добавляет перевод строки автоматически."
+          ],
+          "terms": [
+            "open",
+            "with",
+            "read",
+            "write",
+            "encoding",
+            "контекстный менеджер"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "structure",
+          "title": "Структура проекта",
+          "when": "Когда проект становится больше одного файла.",
+          "rule": "Код держи в src, проверки — в tests, входные данные — в data; запуск — в отдельном main.py.",
+          "code": "project/\n├── src/          # код и __init__.py\n├── tests/        # test_*.py\n├── data/         # исходные и обработанные данные\n├── main.py\n├── pyproject.toml\n└── README.md",
+          "language": "text",
+          "error": "Окружение .venv и локальные секреты .env не являются исходным кодом проекта.",
+          "details": [
+            "docs — документация; конфигурации линтеров — рядом с pyproject.toml. Файлы данных отделяй от модулей."
+          ],
+          "terms": [
+            "src",
+            "tests",
+            "структура",
+            "README"
+          ],
+          "check": "compile",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260177",
+      "moduleId": "m2",
+      "number": "9.1",
+      "title": "Poetry. Оформление кода",
+      "kind": "lesson",
+      "summary": "Poetry фиксирует зависимости, PEP 8 задаёт стиль, линтеры и форматеры помогают поддерживать порядок.",
+      "sources": [
+        {
+          "title": "13 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260177/theory/13"
+        },
+        {
+          "title": "14 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260177/theory/14"
+        }
+      ],
+      "topics": [
+        {
+          "id": "poetry",
+          "title": "Создать проект и запустить код",
+          "when": "Когда нужно окружение с воспроизводимыми зависимостями.",
+          "rule": "pyproject.toml описывает проект, poetry.lock фиксирует разрешённые версии зависимостей.",
+          "code": "poetry new demo\ncd demo\npoetry add requests\npoetry add --group dev pytest\npoetry run python main.py",
+          "language": "bash",
+          "error": "poetry install устанавливает зависимости, poetry update меняет зафиксированные версии.",
+          "details": [
+            "Для существующего проекта используй poetry init. poetry remove удаляет зависимость; poetry show --tree показывает дерево, --latest — доступные обновления.",
+            "poetry env use python3 выбирает интерпретатор. poetry run запускает команду без ручной активации.",
+            "В Poetry 2.x команда poetry shell вынесена в poetry-plugin-shell. poetry env activate выводит команду активации; её надо выполнить в своей оболочке.",
+            "Зависимости разработки добавляй в отдельную группу, например dev или lint."
+          ],
+          "terms": [
+            "poetry",
+            "TOML",
+            "lock",
+            "зависимости",
+            "dependency",
+            "poetry shell"
+          ],
+          "check": "compile",
+          "references": [
+            {
+              "title": "Окружения Poetry",
+              "url": "https://python-poetry.org/docs/managing-environments/"
+            }
+          ]
+        },
+        {
+          "id": "pep8",
+          "title": "PEP 8: оформление кода",
+          "when": "Чтобы код было легко читать.",
+          "rule": "snake_case для функций и переменных; UPPER_CASE для констант; отступ — четыре пробела; пробелы вокруг операторов.",
+          "code": "MAX_ATTEMPTS = 3\n\n\ndef add_numbers(a: int, b: int) -> int:\n    return a + b",
+          "language": "python",
+          "error": "Имена list, sum, print перекрывают встроенные функции, а ключевые слова нельзя использовать как имена.",
+          "details": [
+            "После запятых ставь пробел; функции верхнего уровня разделяй двумя пустыми строками; файл заканчивай переводом строки.",
+            "PEP 8 рекомендует 79 символов для кода и 72 для комментариев/docstring. Для команды допускается договорённость до 99; 119 — настройка курса, а не предел из PEP 8.",
+            "Не используй трудноразличимые однобуквенные имена l, I, O."
+          ],
+          "terms": [
+            "PEP8",
+            "PEP 8",
+            "snake_case",
+            "константа",
+            "стиль"
+          ],
+          "check": "run",
+          "references": [
+            {
+              "title": "PEP 8",
+              "url": "https://peps.python.org/pep-0008/"
+            }
+          ]
+        },
+        {
+          "id": "typing",
+          "title": "Docstring и аннотации типов",
+          "when": "Когда нужно описать контракт функции.",
+          "rule": "Docstring описывает назначение; аннотации показывают ожидаемые типы, но сами не проверяют их во время выполнения.",
+          "code": "def greet(name: str, prefix: str | None = None) -> str:\n    \"\"\"Возвращает приветствие для пользователя.\"\"\"\n    return f\"{prefix or 'Привет'}, {name}!\"",
+          "language": "python",
+          "error": "Аннотация int не преобразует строку в число: преобразование делает int(value).",
+          "details": [
+            "Синтаксис str | None требует Python 3.10+. В старом коде используется Optional[str]; Union[str, int] соответствует str | int.",
+            "typing.Any — любой тип; Iterable[int] — перебираемые числа; Callable — вызываемый объект.",
+            "mypy проверяет типы статически: poetry run mypy src. Проверка полезна только при достаточно точных аннотациях."
+          ],
+          "terms": [
+            "typing",
+            "Union",
+            "Any",
+            "Optional",
+            "Iterable",
+            "Callable",
+            "mypy",
+            "type hints"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "quality",
+          "title": "Линтеры и форматеры",
+          "when": "Перед коммитом.",
+          "rule": "Flake8 ищет ошибки стиля, mypy — несогласованные типы, black форматирует код, isort сортирует импорты.",
+          "code": "poetry add --group lint flake8 mypy black isort\npoetry run flake8 src\npoetry run mypy src\npoetry run black src\npoetry run isort src",
+          "language": "bash",
+          "error": "Согласуй длину строки у инструментов; isort с profile=\"black\" совместим с форматированием black.",
+          "details": [
+            "black, isort и mypy можно настроить в pyproject.toml. Flake8 обычно читает .flake8, setup.cfg или tox.ini.",
+            "Форматирование не гарантирует правильного поведения программы: его проверяют тесты."
+          ],
+          "terms": [
+            "flake8",
+            "black",
+            "isort",
+            "линтер",
+            "форматер"
+          ],
+          "check": "compile",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260178",
+      "moduleId": "m2",
+      "number": "9.2",
+      "title": "Основы Git",
+      "kind": "lesson",
+      "summary": "Изменения идут из рабочей папки в индекс, затем в коммит. Проверяй diff перед сохранением.",
+      "sources": [
+        {
+          "title": "10 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260178/theory/10"
+        },
+        {
+          "title": "11 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260178/theory/11"
+        }
+      ],
+      "topics": [
+        {
+          "id": "git-start",
+          "title": "Настроить Git и сделать коммит",
+          "when": "Чтобы сохранить одну законченную задачу.",
+          "rule": "git add выбирает изменения для индекса; git commit сохраняет именно индекс.",
+          "code": "git config --global user.name \"Your Name\"\ngit config --global user.email \"you@example.com\"\ngit init\ngit status\ngit add main.py\ngit commit -m \"Добавить запуск программы\"",
+          "language": "bash",
+          "error": "Изменение файла после git add не попадёт в коммит без повторного git add.",
+          "details": [
+            "Untracked — не отслеживается; modified — изменён; staged — выбран для коммита; committed — сохранён.",
+            "Делай атомарные коммиты: один коммит — одна понятная задача."
+          ],
+          "terms": [
+            "git init",
+            "git add",
+            "git commit",
+            "индекс",
+            "staging",
+            "коммит"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "ignore",
+          "title": "Игнорирование и удаление из индекса",
+          "when": "Когда временные файлы не должны попасть в историю.",
+          "rule": ".gitignore действует на неотслеживаемые файлы. Уже отслеживаемый файл нужно убрать из индекса отдельно.",
+          "code": "# .gitignore\n.venv/\n__pycache__/\n.env\n*.log\n!debug.log",
+          "language": "text",
+          "error": "Добавление имени в .gitignore не удаляет файл из старых коммитов.",
+          "details": [
+            "git rm --cached file сохраняет файл на диске, но убирает из отслеживания; для папки нужен -r. Изменение надо закоммитить.",
+            "Шаблон /debug.log относится к корню; *.log — к расширению; ! отменяет игнорирование."
+          ],
+          "terms": [
+            "gitignore",
+            "git rm",
+            "cached",
+            "игнорирование"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "history",
+          "title": "Diff и история",
+          "when": "Чтобы увидеть, что изменилось и когда.",
+          "rule": "git diff сравнивает рабочую папку с индексом; --staged — индекс с последним коммитом.",
+          "code": "git diff\ngit diff --staged\ngit log --oneline --graph --all --decorate\ngit show HEAD\ngit log -p -- main.py",
+          "language": "bash",
+          "error": "Пустой git diff не означает отсутствие изменений: они могли уже попасть в индекс.",
+          "details": [
+            "Для фильтра истории: --author, --since, --until, --grep. После -- можно указать путь к файлу.",
+            "HEAD указывает на текущий коммит; HEAD~1 — на его первого родителя."
+          ],
+          "terms": [
+            "git diff",
+            "git log",
+            "git show",
+            "HEAD",
+            "история"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "undo",
+          "title": "Restore, revert, reset",
+          "when": "Когда нужно отменить изменение.",
+          "rule": "restore — файлы/индекс; revert — новый отменяющий коммит; reset — перемещение ветки к другому коммиту.",
+          "code": "git restore --staged main.py  # убрать из индекса\ngit restore main.py           # отбросить правки в файле\ngit revert HEAD              # отменить коммит новым коммитом\ngit reset --soft HEAD~1      # вернуть коммит в индекс",
+          "language": "bash",
+          "error": "git reset --hard отбрасывает изменения в отслеживаемых файлах. Общую опубликованную историю обычно отменяют через revert.",
+          "details": [
+            "reset --soft сохраняет индекс и рабочую папку; --mixed (по умолчанию) сбрасывает индекс, сохраняя файлы; --hard сбрасывает оба.",
+            "Для удаления двух локальных коммитов: git reset HEAD~2. Коммиты перестают быть вершиной ветки, а не мгновенно исчезают из всех объектов Git."
+          ],
+          "terms": [
+            "git reset",
+            "git revert",
+            "git restore",
+            "отмена",
+            "soft",
+            "mixed",
+            "hard"
+          ],
+          "check": "compile",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260179",
+      "moduleId": "m2",
+      "number": "10.1",
+      "title": "Продвинутый Git",
+      "kind": "lesson",
+      "summary": "Удалённый репозиторий хранит общую историю; работай в ветке, отправляй изменения и объединяй их через ревью.",
+      "sources": [
+        {
+          "title": "16 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260179/theory/16"
+        },
+        {
+          "title": "17 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260179/theory/17"
+        }
+      ],
+      "topics": [
+        {
+          "id": "remote",
+          "title": "Связать локальный Git с GitHub",
+          "when": "Для публикации или получения проекта.",
+          "rule": "clone создаёт локальную копию; remote связывает существующий репозиторий с адресом; push отправляет коммиты.",
+          "code": "git clone https://github.com/user/project.git\n# Для уже существующего локального репозитория:\ngit remote add origin https://github.com/user/project.git\ngit remote -v\ngit push -u origin main",
+          "language": "bash",
+          "error": "clone и remote add — два разных сценария; не выполняй оба без необходимости.",
+          "details": [
+            "fetch загружает историю, не меняя текущую рабочую ветку. pull получает изменения и объединяет их с текущей веткой.",
+            "HTTPS использует токен/менеджер учётных данных; SSH — пару ключей. В GitHub добавляют только публичную часть ключа.",
+            "git remote remove origin удаляет связь. -u задаёт upstream для последующих push/pull."
+          ],
+          "terms": [
+            "GitHub",
+            "remote",
+            "origin",
+            "clone",
+            "fetch",
+            "pull",
+            "push",
+            "SSH",
+            "токен"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "branches",
+          "title": "Ветки и pull request",
+          "when": "Чтобы менять код независимо от основной версии.",
+          "rule": "Создай ветку, закоммить изменения, отправь её и открой PR в целевую ветку.",
+          "code": "git switch -c feature/search\ngit add .\ngit commit -m \"Добавить поиск\"\ngit push -u origin feature/search\ngit branch -a",
+          "language": "bash",
+          "error": "Перед merge проверь, в какой ветке находишься: изменения вливаются в текущую ветку.",
+          "details": [
+            "Аналог switch -c в старом синтаксисе: checkout -b. branch -m переименовывает, branch -d удаляет слитую ветку; -D удаляет принудительно.",
+            "PR — предложение объединить изменения после проверки, обсуждения и ревью."
+          ],
+          "terms": [
+            "branch",
+            "checkout",
+            "switch",
+            "PR",
+            "pull request",
+            "ветка"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "merge",
+          "title": "Merge, rebase и конфликты",
+          "when": "Когда две ветки изменяли одни файлы.",
+          "rule": "merge объединяет истории; rebase пересоздаёт коммиты поверх другой базы и меняет их хеши.",
+          "code": "git switch main\ngit merge feature/search\n# При конфликте: исправить файл, убрать маркеры\ngit add conflicted.py\ngit commit",
+          "language": "bash",
+          "error": "После конфликта недостаточно удалить маркеры: проверь итоговый код и запусти тесты.",
+          "details": [
+            "Если текущая ветка — предок другой, merge может выполнить fast-forward без нового merge-коммита. Иначе обычно возникает коммит слияния.",
+            "Для локальной feature-ветки: git rebase main; после исправления конфликтов — git add file и git rebase --continue. Отмена — git rebase --abort или git merge --abort.",
+            "Не переписывай rebase общие опубликованные коммиты без согласования."
+          ],
+          "terms": [
+            "merge",
+            "rebase",
+            "конфликт",
+            "fast-forward"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "gitflow",
+          "title": "GitFlow",
+          "when": "Когда в проекте используется схема веток для релизов.",
+          "rule": "main — выпущенная версия; develop — разработка; feature — функция; release — подготовка релиза; hotfix — срочное исправление.",
+          "code": "develop → feature → develop\ndevelop → release → main + develop\nmain → hotfix → main + develop",
+          "language": "text",
+          "error": "Исправление из release/hotfix должно попасть и в main, и в develop.",
+          "details": [
+            "GitFlow — договорённость команды, а не обязательный режим Git. Для небольшого проекта может хватать main и коротких feature-веток."
+          ],
+          "terms": [
+            "GitFlow",
+            "develop",
+            "release",
+            "hotfix"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "readme",
+          "title": "README и Markdown",
+          "when": "Чтобы объяснить запуск проекта.",
+          "rule": "README содержит назначение, установку, запуск и примеры. Markdown задаёт простую разметку.",
+          "code": "# Название проекта\nКороткое описание.\n\n## Запуск\n`poetry run python main.py`\n\n- [Документация](https://example.com)",
+          "language": "markdown",
+          "error": "Инструкция должна работать для человека с новой копией репозитория.",
+          "details": [
+            "**текст** — жирный, *текст* — курсив; ![описание](url) — изображение; тройные обратные кавычки — блок кода."
+          ],
+          "terms": [
+            "README",
+            "Markdown",
+            "документация"
+          ],
+          "check": "compile",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260180",
+      "moduleId": "m2",
+      "number": "10.2",
+      "title": "Тестирование. Pytest",
+      "kind": "lesson",
+      "summary": "Тест сравнивает поведение с ожиданием. Проверяй обычный случай, пустые данные, границы и ожидаемые исключения.",
+      "sources": [
+        {
+          "title": "14 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260180/theory/14"
+        },
+        {
+          "title": "15 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260180/theory/15"
+        }
+      ],
+      "topics": [
+        {
+          "id": "tests",
+          "title": "assert и запуск pytest",
+          "when": "Когда проверяешь результат функции.",
+          "rule": "pytest находит test_*.py и функции test_*. assert вызывает AssertionError, если условие ложно.",
+          "code": "def up_first(text):\n    return text[:1].upper() + text[1:]\n\ndef test_up_first():\n    assert up_first(\"python\") == \"Python\"\n    assert up_first(\"\") == \"\"",
+          "language": "python",
+          "error": "Ожидаемый результат получай из условия задачи, а не копированием вывода проверяемой функции.",
+          "details": [
+            "Запуск: poetry run pytest; подробности: pytest -v; один тест: pytest tests/test_text.py::test_up_first.",
+            "Unit-тест проверяет небольшой блок, интеграционный — взаимодействие компонентов.",
+            "assert не используй как единственную валидацию пользовательского ввода: Python -O отключает обычные assert."
+          ],
+          "terms": [
+            "pytest",
+            "assert",
+            "unit",
+            "integration",
+            "тестирование"
+          ],
+          "check": "pytest",
+          "references": []
+        },
+        {
+          "id": "raises",
+          "title": "Ожидаемые исключения",
+          "when": "Для некорректных входных данных.",
+          "rule": "pytest.raises проверяет, что блок кода вызвал нужный тип исключения.",
+          "code": "import pytest\n\ndef test_bad_number():\n    with pytest.raises(ValueError, match=\"invalid literal\"):\n        int(\"abc\")",
+          "language": "python",
+          "error": "Не оборачивай слишком большой блок: нужное исключение может возникнуть не в той операции.",
+          "details": [
+            "as exc_info даёт доступ к исключению: exc_info.value. match проверяет сообщение регулярным выражением."
+          ],
+          "terms": [
+            "raises",
+            "исключение",
+            "ошибка",
+            "ValueError"
+          ],
+          "check": "pytest",
+          "references": []
+        },
+        {
+          "id": "fixtures",
+          "title": "Фикстуры и conftest.py",
+          "when": "Когда нескольким тестам нужны одинаковые исходные данные.",
+          "rule": "Фикстура объявляется через @pytest.fixture; тест получает результат параметром с тем же именем.",
+          "code": "import pytest\n\n@pytest.fixture\ndef numbers():\n    return [1, 2, 3]\n\ndef test_sum(numbers):\n    assert sum(numbers) == 6",
+          "language": "python",
+          "error": "Передавай в тест имя фикстуры, а не вызывай её вручную.",
+          "details": [
+            "Общие фикстуры размещают в conftest.py: тесты в его области видимости используют их без явного импорта.",
+            "По умолчанию scope=\"function\": каждый тест получает новое значение. yield в фикстуре разделяет подготовку и очистку ресурсов."
+          ],
+          "terms": [
+            "fixture",
+            "фикстура",
+            "conftest.py",
+            "scope"
+          ],
+          "check": "pytest",
+          "references": []
+        },
+        {
+          "id": "parametrize",
+          "title": "Параметризация",
+          "when": "Для одной проверки на нескольких наборах данных.",
+          "rule": "@pytest.mark.parametrize создаёт отдельный запуск теста для каждого набора параметров.",
+          "code": "import pytest\n\n@pytest.mark.parametrize(\"text, expected\", [\n    (\"\", \"\"), (\"python\", \"Python\"), (\"Я\", \"Я\")\n])\ndef test_title(text, expected):\n    assert text[:1].upper() + text[1:] == expected",
+          "language": "python",
+          "error": "Имена параметров должны совпадать с аргументами функции теста.",
+          "details": [
+            "Добавляй не только типичный ввод: пустые коллекции, ноль, отрицательные значения, одиночные элементы."
+          ],
+          "terms": [
+            "parametrize",
+            "параметризация",
+            "граничные случаи"
+          ],
+          "check": "pytest",
+          "references": []
+        },
+        {
+          "id": "coverage",
+          "title": "TDD и покрытие",
+          "when": "Чтобы развивать код небольшими проверяемыми шагами.",
+          "rule": "TDD: падающий тест → минимальный рабочий код → рефакторинг. Coverage показывает выполненные участки кода.",
+          "code": "poetry add --group dev pytest-cov\npoetry run pytest --cov=src --cov-report=html",
+          "language": "bash",
+          "error": "100% покрытия не означает, что проверены все случаи или что ожидания верны.",
+          "details": [
+            "HTML-отчёт находится в htmlcov/index.html. Помимо процента оценивай качество утверждений и покрытие ветвлений."
+          ],
+          "terms": [
+            "TDD",
+            "coverage",
+            "pytest-cov",
+            "покрытие"
+          ],
+          "check": "compile",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260181",
+      "moduleId": "m2",
+      "number": "11.1",
+      "title": "Включения и генераторы",
+      "kind": "lesson",
+      "summary": "Включение создаёт коллекцию сразу; генератор выдаёт значения по запросу и расходуется при обходе.",
+      "sources": [
+        {
+          "title": "14 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260181/theory/14"
+        },
+        {
+          "title": "15 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260181/theory/15"
+        }
+      ],
+      "topics": [
+        {
+          "id": "iterator",
+          "title": "Iterable и iterator",
+          "when": "Когда перебираешь последовательность.",
+          "rule": "Итерируемый объект даёт итератор через iter(); next() берёт следующий элемент; конец обозначает StopIteration.",
+          "code": "iterator = iter([10, 20])\nfirst = next(iterator)       # 10\nsecond = next(iterator)      # 20\nend = next(iterator, None)   # None",
+          "language": "python",
+          "error": "Итератор хранит позицию; повторный обход продолжает с текущего места.",
+          "details": [
+            "for сам вызывает iter/next и обрабатывает StopIteration. Список можно обходить заново, получив новый итератор."
+          ],
+          "terms": [
+            "iter",
+            "next",
+            "итератор",
+            "iterable",
+            "StopIteration"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "pipeline",
+          "title": "map, filter, chain",
+          "when": "Для последовательной обработки данных.",
+          "rule": "map преобразует, filter отбирает, itertools.chain объединяет. Их результаты можно передавать друг другу.",
+          "code": "from itertools import chain\nitems = chain([1, 2], [3, 4])\nevens = filter(lambda x: x % 2 == 0, items)\nresult = list(map(lambda x: x * 10, evens))  # [20, 40]",
+          "language": "python",
+          "error": "map и filter возвращают итераторы, а не готовые списки.",
+          "details": [
+            "Предикат — функция, проверяющая условие. Для просмотра результата используй list(), только если данные конечны и помещаются в память."
+          ],
+          "terms": [
+            "map",
+            "filter",
+            "chain",
+            "pipeline",
+            "конвейер",
+            "предикат"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "comprehension",
+          "title": "Включения списков",
+          "when": "Для короткого преобразования и отбора.",
+          "rule": "[выражение for элемент in источник if условие] создаёт список сразу.",
+          "code": "squares = [x * x for x in range(6) if x % 2 == 0]\nlabels = [\"чётное\" if x % 2 == 0 else \"нечётное\"\n          for x in range(3)]",
+          "language": "python",
+          "error": "if после for фильтрует элементы; if/else перед for выбирает значение.",
+          "details": [
+            "Несколько for идут в том же порядке, что вложенные циклы: [(x, y) for x in xs for y in ys].",
+            "Если выражение трудно прочитать, обычный цикл яснее."
+          ],
+          "terms": [
+            "list comprehension",
+            "генератор списка",
+            "включение",
+            "for",
+            "if"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "expression",
+          "title": "Генераторное выражение",
+          "when": "Когда не нужен весь список одновременно.",
+          "rule": "(выражение for элемент in источник) вычисляет элементы лениво; каждый элемент выдаётся один раз.",
+          "code": "squares = (x * x for x in range(3))\nfirst = next(squares)       # 0\nrest = list(squares)        # [1, 4]\nempty = list(squares)       # []",
+          "language": "python",
+          "error": "После list(), sum() или полного цикла генератор исчерпан. Для повторного обхода создай новый.",
+          "details": [
+            "any(condition for x in data) останавливается при первом True; all — при первом False. Для пустого входа any=False, all=True.",
+            "Ленивая обработка экономит память; она не гарантирует ускорения любого вычисления."
+          ],
+          "terms": [
+            "generator expression",
+            "генератор",
+            "ленивый",
+            "any",
+            "all",
+            "однократный"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "yield",
+          "title": "Функция-генератор: yield и return",
+          "when": "Когда последовательность создаётся по шагам.",
+          "rule": "yield выдаёт значение и приостанавливает функцию; следующий next() продолжает после yield. return завершает генератор.",
+          "code": "def numbers():\n    yield 1\n    yield 2\n\ngen = numbers()  # тело ещё не выполняется\nfirst = next(gen)  # 1\nrest = list(gen)   # [2]",
+          "language": "python",
+          "error": "Создание генератора не запускает тело функции: выполнение начинается при первом next() или обходе.",
+          "details": [
+            "Локальные переменные сохраняются между выдачами. После последнего элемента next(gen) вызывает StopIteration.",
+            "Бесконечный генератор ограничивай количеством next() или itertools.islice; list() от него не завершится."
+          ],
+          "terms": [
+            "yield",
+            "return",
+            "генераторная функция",
+            "инициализация",
+            "приостановка"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "generator-tests",
+          "title": "Проверять генераторы",
+          "when": "Для конечной или бесконечной последовательности.",
+          "rule": "Конечный генератор сравнивают через list(); бесконечный — по первым значениям.",
+          "code": "from itertools import count, islice\n\ndef test_counter():\n    assert list(islice(count(1), 3)) == [1, 2, 3]\n    assert list(x * x for x in range(3)) == [0, 1, 4]",
+          "language": "python",
+          "error": "Каждый независимый тест должен создавать свежий генератор.",
+          "details": [
+            "Проверяй пустой вход, правильный порядок и завершение. Для StopIteration используй pytest.raises."
+          ],
+          "terms": [
+            "pytest",
+            "islice",
+            "генератор тестирование"
+          ],
+          "check": "pytest",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260182",
+      "moduleId": "m2",
+      "number": "11.2",
+      "title": "Декораторы",
+      "kind": "lesson",
+      "summary": "Декоратор оборачивает функцию. Сохраняй её аргументы, результат и метаданные; проверяй порядок обёрток.",
+      "sources": [
+        {
+          "title": "12 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260182/theory/12"
+        },
+        {
+          "title": "13 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260182/theory/13"
+        }
+      ],
+      "topics": [
+        {
+          "id": "closure",
+          "title": "Замыкание",
+          "when": "Чтобы функция запомнила настройку.",
+          "rule": "Внутренняя функция использует переменные внешней области даже после завершения внешней функции.",
+          "code": "def multiplier(factor):\n    def multiply(value):\n        return factor * value\n    return multiply\n\ndouble = multiplier(2)\nresult = double(5)  # 10",
+          "language": "python",
+          "error": "Возвращай внутреннюю функцию, а не результат её немедленного вызова.",
+          "details": [
+            "Для изменения переменной внешней функции из внутренней нужен nonlocal."
+          ],
+          "terms": [
+            "closure",
+            "замыкание",
+            "nonlocal"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "decorator",
+          "title": "Декоратор и wraps",
+          "when": "Для дополнительного поведения до/после вызова.",
+          "rule": "@decorator эквивалентно func = decorator(func). Обёртка принимает аргументы и возвращает исходный результат.",
+          "code": "from functools import wraps\n\ndef traced(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper",
+          "language": "python",
+          "error": "Без return func(...) результат теряется; без wraps меняются имя и docstring.",
+          "details": [
+            "@wraps(func) переносит метаданные на wrapper и добавляет __wrapped__ для доступа к исходной функции.",
+            "*args собирает позиционные аргументы, **kwargs — именованные; при вызове они распаковываются."
+          ],
+          "terms": [
+            "decorator",
+            "декоратор",
+            "wraps",
+            "wrapper",
+            "args",
+            "kwargs"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "parameters",
+          "title": "Декоратор с параметрами",
+          "when": "Когда поведение зависит от настройки.",
+          "rule": "Три уровня: настройка → декоратор функции → обёртка вызова.",
+          "code": "from functools import wraps\n\ndef scale(factor):\n    def decorate(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            return factor * func(*args, **kwargs)\n        return wrapper\n    return decorate",
+          "language": "python",
+          "error": "Не перепутай возвращаемые функции: decorate и wrapper возвращаются на разных уровнях.",
+          "details": [
+            "Применение: @scale(2) над функцией. scale(2) сначала создаёт декоратор с выбранным factor."
+          ],
+          "terms": [
+            "decorator factory",
+            "декоратор с параметрами"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "order",
+          "title": "Порядок декораторов",
+          "when": "Когда над функцией несколько @.",
+          "rule": "@outer над @inner означает outer(inner(func)): оборачивание идёт снизу вверх, вход в обёртки — снаружи внутрь.",
+          "code": "# Эти записи эквивалентны:\n@outer\n@inner\ndef func():\n    pass\n\n# func = outer(inner(original_func))",
+          "language": "python",
+          "error": "«Снизу вверх» описывает создание обёрток, а не обязательно порядок действий при каждом вызове.",
+          "details": [
+            "Действия перед вызовом идут outer → inner → func; после вызова — в обратном порядке."
+          ],
+          "terms": [
+            "порядок",
+            "несколько декораторов"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "decorator-tests",
+          "title": "Тестировать декоратор и вывод",
+          "when": "Чтобы убедиться, что обёртка сохраняет контракт.",
+          "rule": "Проверяй результат, передачу аргументов, исключения и дополнительное поведение; capsys перехватывает вывод.",
+          "code": "def test_output(capsys):\n    print(\"готово\")\n    assert capsys.readouterr().out == \"готово\\n\"",
+          "language": "python",
+          "error": "Проверка только имени или docstring не проверяет поведение обёртки.",
+          "details": [
+            "Для декоратора с параметрами проверяй разные настройки. Для повторных попыток проверяй число вызовов и конечное исключение."
+          ],
+          "terms": [
+            "pytest",
+            "capsys",
+            "stdout",
+            "декоратор тест"
+          ],
+          "check": "pytest",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260183",
+      "moduleId": "m2",
+      "number": "",
+      "title": "Дополнительная практика",
+      "kind": "practice",
+      "summary": "Проверяй пустые строки, крайние случаи и порядок обработки. Ревью начинается с входа, результата и побочных эффектов.",
+      "sources": [
+        {
+          "title": "2 Задачи на закрепление базовых навыков",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/2"
+        },
+        {
+          "title": "3 Задачи по написанию функций",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/3"
+        },
+        {
+          "title": "4 Задачи к уроку «Тестирование с pytest»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/4"
+        },
+        {
+          "title": "5 Задачи к уроку «Включения и генераторы»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/5"
+        },
+        {
+          "title": "6 Задачи к уроку «Декораторы»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/6"
+        },
+        {
+          "title": "7 Задача 1. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/7"
+        },
+        {
+          "title": "8 Задача 2. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/8"
+        },
+        {
+          "title": "9 Задача 3. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/9"
+        },
+        {
+          "title": "10 Задача 4. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/10"
+        },
+        {
+          "title": "11 Задача 5. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/11"
+        },
+        {
+          "title": "12 Задача 6. Ревью и дебаг кода",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260183/theory/12"
+        }
+      ],
+      "topics": [
+        {
+          "id": "boundaries",
+          "title": "Пустые данные и границы",
+          "when": "При отборе строк и чисел.",
+          "rule": "Сначала обработай пустой случай, затем обращайся к элементам. Сохраняй правила из условия задачи.",
+          "code": "def same_ends(words):\n    return [word for word in words\n            if not word or word[0] == word[-1]]\n\nresult = same_ends([\"\", \"pop\", \"hello\"])  # [\"\", \"pop\"]",
+          "language": "python",
+          "error": "word[0] для пустой строки вызывает IndexError. В этой задаче пустые строки сохраняются.",
+          "details": [
+            "Для суммы чисел, кратных 3 или 5, проверяй пустой список, отрицательные числа, ноль и число 15: оно учитывается один раз.",
+            "Для функции подсчёта файлов уточни: путь по умолчанию, файлы/папки отдельно, рекурсивность. Используй os.walk для вложенного обхода.",
+            "Для помесячной статистики различай сумму заказа, среднюю стоимость заказа и число заказов."
+          ],
+          "terms": [
+            "IndexError",
+            "пустая строка",
+            "граничные",
+            "os.walk",
+            "заказы"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "sequence",
+          "title": "Последовательности и собственные map/filter",
+          "when": "Когда реализуешь ленивую обработку.",
+          "rule": "Генератор выдаёт результат через yield; состояние последовательности обновляется после каждой выдачи.",
+          "code": "def fibonacci():\n    a, b = 0, 1\n    while True:\n        yield a\n        a, b = b, a + b\n\nfrom itertools import islice\nresult = list(islice(fibonacci(), 6))",
+          "language": "python",
+          "error": "Сначала выдавай текущее значение, затем изменяй состояние; не превращай бесконечную последовательность в list.",
+          "details": [
+            "Для степеней 2 начинай с 1 и умножай на 2; для факториалов сохраняй накопленный результат.",
+            "my_map: yield func(x); my_filter: yield x только при predicate(x); replicate_each: для каждого x выдай его n раз.",
+            "В FizzBuzz проверку кратности 15 ставь раньше проверок 3 и 5."
+          ],
+          "terms": [
+            "Фибоначчи",
+            "Fibonacci",
+            "factorial",
+            "FizzBuzz",
+            "my_map",
+            "my_filter",
+            "replicate_each"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "memo",
+          "title": "Кеширование и ресурсы",
+          "when": "Когда функция вызывается с одинаковыми аргументами.",
+          "rule": "Кеш хранит результат по аргументам; ограниченный кеш должен удалять записи по выбранному правилу.",
+          "code": "from functools import lru_cache\n\n@lru_cache(maxsize=3)\ndef square(number):\n    return number * number\n\nresult = square(4)",
+          "language": "python",
+          "error": "Аргументы lru_cache должны быть хешируемыми; изменяемый список не подходит.",
+          "details": [
+            "LRU удаляет наименее недавно использованную запись. В задании с вытеснением самой старой добавленной записи нужен FIFO: это другое правило.",
+            "Кешируй функции, для которых одинаковый ввод даёт одинаковый результат. Для счётчика вызовов используй nonlocal.",
+            "Освобождение ресурсов делай через with или finally, чтобы оно выполнялось и при исключении."
+          ],
+          "terms": [
+            "cache",
+            "кеш",
+            "мемоизация",
+            "memoization",
+            "FIFO",
+            "LRU",
+            "finally"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "review",
+          "title": "Ревью и дебаг",
+          "when": "Когда читаешь чужой код.",
+          "rule": "Воспроизведи ошибку, найди минимальный пример, проверь вход → преобразования → выход и добавь тест на исправление.",
+          "code": "def total(*numbers):\n    return sum(numbers)\n\nresult = total(*range(4))  # 6",
+          "language": "python",
+          "error": "*numbers в объявлении собирает аргументы в tuple; *range(4) при вызове распаковывает их.",
+          "details": [
+            "Проверяй разбиение по функциям/модулям, docstring, типы, пути файлов и настройки API.",
+            "Для слов нормализуй регистр; для выбора случайного файла используй реальные файлы и полный путь.",
+            "Функциональный код можно строить из map/filter/reduce, но простые sum и включения часто читаются легче."
+          ],
+          "terms": [
+            "review",
+            "debug",
+            "рефакторинг",
+            "reduce",
+            "args",
+            "дебаг"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260184",
+      "moduleId": "m3",
+      "number": "12.1",
+      "title": "Библиотеки json, requests и datetime",
+      "kind": "lesson",
+      "summary": "JSON хранит данные, requests получает их по HTTP, datetime разбирает даты. Внешние запросы в тестах заменяются моками.",
+      "sources": [
+        {
+          "title": "17 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260184/theory/17"
+        },
+        {
+          "title": "18 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260184/theory/18"
+        }
+      ],
+      "topics": [
+        {
+          "id": "json",
+          "title": "JSON: строки и файлы",
+          "when": "Для обмена структурированными данными.",
+          "rule": "loads/dumps работают со строками; load/dump — с файловыми объектами. JSON использует двойные кавычки, true/false/null.",
+          "code": "import json\ndata = json.loads('{\"name\": \"Иван\", \"active\": true}')\ntext = json.dumps(data, ensure_ascii=False, indent=2)",
+          "language": "python",
+          "error": "Строка с одинарными кавычками Python не становится корректным JSON. Некорректный JSON вызывает JSONDecodeError.",
+          "details": [
+            "dict ↔ object; list ↔ array; True/False ↔ true/false; None ↔ null. Ключи JSON-объекта — строки.",
+            "Для файла: with open(path, encoding=\"utf-8\") as f: data = json.load(f). Изменение файла: прочитать → изменить объект → записать json.dump(...).",
+            "datetime и set не сериализуются автоматически: преобразуй их явно. Для неизвестных ключей проверь наличие или используй get()."
+          ],
+          "terms": [
+            "json",
+            "loads",
+            "dumps",
+            "load",
+            "dump",
+            "JSONDecodeError",
+            "сериализация"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "http",
+          "title": "API, HTTP и requests",
+          "when": "Чтобы получить данные от сервиса.",
+          "rule": "В документации API найди URL, метод, параметры, авторизацию и формат ответа. GET получает, POST отправляет данные.",
+          "code": "import requests\n\nresponse = requests.get(\n    \"https://example.com/api/items\",\n    params={\"page\": 1}, timeout=10\n)\nresponse.raise_for_status()\ndata = response.json()",
+          "language": "python",
+          "error": "response.json() не гарантирует успешного HTTP-статуса. Проверяй его и задавай timeout.",
+          "details": [
+            "params — query-параметры, json — JSON-тело, data — форма/другое тело, headers — заголовки. PUT заменяет, PATCH изменяет часть, DELETE удаляет.",
+            "200 — успех; 201 — создано; 204 — успешный ответ без тела; 301/302 — перенаправление; 400 — неверный запрос; 401 — нужна авторизация; 403 — нет доступа; 404 — не найдено; 500 — ошибка сервера.",
+            "У ответа доступны status_code, text, content и headers. URL состоит из схемы, хоста, пути и параметров."
+          ],
+          "terms": [
+            "requests",
+            "API",
+            "HTTP",
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE",
+            "status",
+            "URL"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "request-errors",
+          "title": "Ошибки запросов",
+          "when": "Когда сеть или внешний сервис недоступны.",
+          "rule": "Отдельно обрабатывай сетевой сбой, тайм-аут, HTTP-ошибку и некорректный JSON.",
+          "code": "import requests\n\ndef fetch(url):\n    try:\n        response = requests.get(url, timeout=10)\n        response.raise_for_status()\n        return response.json()\n    except (requests.RequestException, ValueError):\n        return None",
+          "language": "python",
+          "error": "Не путай отсутствие ответа, HTTP 404 и пустое поле в успешно полученном JSON.",
+          "details": [
+            "ConnectionError — соединение; Timeout — превышено время; HTTPError появляется после raise_for_status(); TooManyRedirects — слишком много перенаправлений.",
+            "RequestException объединяет ошибки requests. В реальном приложении записывай причину сбоя, чтобы None не скрывал её."
+          ],
+          "terms": [
+            "ConnectionError",
+            "Timeout",
+            "HTTPError",
+            "TooManyRedirects",
+            "RequestException",
+            "таймаут"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "env",
+          "title": "Авторизация и .env",
+          "when": "Когда API требует ключ.",
+          "rule": "Секрет читается из окружения. .env — локальные значения; .env.example — шаблон без настоящих ключей.",
+          "code": "import os\nfrom dotenv import load_dotenv\n\nload_dotenv()\napi_key = os.getenv(\"API_KEY\")",
+          "language": "python",
+          "error": "Не включай реальные ключи в код, коммиты и логи. Проверь, что API_KEY задан до запроса.",
+          "details": [
+            "python-dotenv — отдельная зависимость. Добавь .env в .gitignore.",
+            "Bearer-токен часто передаётся в headers={\"Authorization\": f\"Bearer {api_key}\"}; точный способ определяет документация API."
+          ],
+          "terms": [
+            "dotenv",
+            "token",
+            "Bearer",
+            "аутентификация",
+            "переменные окружения"
+          ],
+          "check": "compile",
+          "references": []
+        },
+        {
+          "id": "mock",
+          "title": "Mock и patch",
+          "when": "Чтобы тестировать API без реальной сети.",
+          "rule": "Mock имитирует объект; patch временно подменяет имя там, где его использует проверяемый код.",
+          "code": "from unittest.mock import Mock\n\nresponse = Mock()\nresponse.json.return_value = {\"total\": 3}\ndata = response.json()\nresponse.json.assert_called_once_with()",
+          "language": "python",
+          "error": "Подменяй имя в модуле использования: app.requests.get или app.get — в зависимости от способа импорта.",
+          "details": [
+            "with patch(\"app.requests.get\", return_value=response): ... временно заменяет запрос. После блока имя восстанавливается.",
+            "return_value задаёт ответ, side_effect — исключение или последовательность ответов; assert_called_once_with проверяет вызов."
+          ],
+          "terms": [
+            "Mock",
+            "patch",
+            "mocking",
+            "мок",
+            "заглушка"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "datetime",
+          "title": "Разобрать и отформатировать дату",
+          "when": "Когда дата приходит строкой.",
+          "rule": "strptime: строка → datetime; strftime: datetime → строка. Шаблон должен совпадать с входом.",
+          "code": "from datetime import datetime\n\ndate = datetime.strptime(\"14.10.2026\", \"%d.%m.%Y\")\niso = date.strftime(\"%Y-%m-%d\")  # 2026-10-14",
+          "language": "python",
+          "error": "%m — месяц, %M — минуты. Несовпадение шаблона вызывает ValueError.",
+          "details": [
+            "%d — день; %Y — четырёхзначный год; %H — часы (24); %M — минуты; %S — секунды. fromisoformat разбирает поддерживаемую ISO-строку.",
+            "Атрибуты: year, month, day, hour, minute, second; weekday() возвращает 0 для понедельника."
+          ],
+          "terms": [
+            "datetime",
+            "strftime",
+            "strptime",
+            "дата",
+            "форматирование"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "time",
+          "title": "Текущее время и изменение даты",
+          "when": "Для вычисления интервалов.",
+          "rule": "timedelta сдвигает дату на интервал; replace меняет конкретные поля и возвращает новый объект.",
+          "code": "from datetime import datetime, timedelta, timezone\n\nnow = datetime.now(timezone.utc)\ntomorrow = now + timedelta(days=1)\nstart = now.replace(hour=0, minute=0, second=0, microsecond=0)",
+          "language": "python",
+          "error": "Не сравнивай дату с часовым поясом (aware) и дату без него (naive).",
+          "details": [
+            "datetime.now() без аргумента даёт местное время без информации о поясе. Для момента времени указывай пояс.",
+            "replace(day=...) не прибавляет дни; недопустимое число месяца вызывает ValueError."
+          ],
+          "terms": [
+            "timedelta",
+            "timezone",
+            "UTC",
+            "now",
+            "replace",
+            "часовой пояс"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260185",
+      "moduleId": "m3",
+      "number": "12.2",
+      "title": "Библиотека logging",
+      "kind": "lesson",
+      "summary": "Logger создаёт запись, Handler выбирает место вывода, Formatter задаёт вид. Уровни фильтруются и логером, и обработчиком.",
+      "sources": [
+        {
+          "title": "13 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260185/theory/13"
+        },
+        {
+          "title": "14 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260185/theory/14"
+        }
+      ],
+      "topics": [
+        {
+          "id": "levels",
+          "title": "Уровни логирования",
+          "when": "Для наблюдения за работой программы.",
+          "rule": "DEBUG < INFO < WARNING < ERROR < CRITICAL. Порог пропускает сообщения своего уровня и выше.",
+          "code": "import logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nlogger.info(\"Загружено %s записей\", 3)",
+          "language": "python",
+          "error": "По умолчанию порог корневого логера — WARNING: INFO может не появиться.",
+          "details": [
+            "DEBUG — детали отладки; INFO — обычный ход; WARNING — подозрительная ситуация; ERROR — ошибка операции; CRITICAL — критический сбой.",
+            "Вызовы с %s и отдельными аргументами откладывают форматирование до обработки сообщения."
+          ],
+          "terms": [
+            "logging",
+            "DEBUG",
+            "INFO",
+            "WARNING",
+            "ERROR",
+            "CRITICAL",
+            "логирование"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "handlers",
+          "title": "Logger, Handler, Formatter",
+          "when": "Чтобы писать в консоль и файл.",
+          "rule": "Logger получает событие, Handler отправляет его, Formatter форматирует сообщение.",
+          "code": "import logging\n\nlogger = logging.getLogger(\"demo\")\nlogger.setLevel(logging.INFO)\nhandler = logging.StreamHandler()\nhandler.setFormatter(logging.Formatter(\n    \"%(asctime)s %(levelname)s %(name)s: %(message)s\"\n))\nlogger.addHandler(handler)",
+          "language": "python",
+          "error": "Повторное добавление обработчика при каждом вызове функции дублирует строки логов.",
+          "details": [
+            "FileHandler(\"app.log\", encoding=\"utf-8\") пишет в файл; StreamHandler — в поток (по умолчанию stderr). У каждого обработчика можно установить свой уровень.",
+            "propagate передаёт записи родительскому логеру; если обработчики есть и у дочернего, и у родителя, возможны дубли.",
+            "Логер обычно создают через getLogger(__name__), а конфигурацию выполняют один раз в точке входа."
+          ],
+          "terms": [
+            "Logger",
+            "Handler",
+            "Formatter",
+            "StreamHandler",
+            "FileHandler",
+            "propagate"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "exceptions",
+          "title": "Логировать исключения",
+          "when": "Когда операция не завершилась успешно.",
+          "rule": "logger.exception внутри except добавляет сообщение и traceback.",
+          "code": "import logging\nlogger = logging.getLogger(__name__)\n\ntry:\n    result = 1 / 0\nexcept ZeroDivisionError:\n    logger.exception(\"Не удалось выполнить деление\")",
+          "language": "python",
+          "error": "Не записывай в логи токены и другие секреты из входных данных.",
+          "details": [
+            "logger.error(\"Ошибка\", exc_info=True) также добавляет сведения об исключении.",
+            "basicConfig обычно не меняет уже настроенный root logger; конфигурацию выполняй до начала обработки данных."
+          ],
+          "terms": [
+            "traceback",
+            "exc_info",
+            "exception",
+            "ошибка логирование"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260186",
+      "moduleId": "m3",
+      "number": "13.1",
+      "title": "Библиотеки csv и pandas",
+      "kind": "lesson",
+      "summary": "csv читает строки и словари; pandas работает с таблицей. Выбирай данные через loc/iloc, объединяй условия через & и |.",
+      "sources": [
+        {
+          "title": "12 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260186/theory/12"
+        },
+        {
+          "title": "13 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260186/theory/13"
+        }
+      ],
+      "topics": [
+        {
+          "id": "csv",
+          "title": "CSV: чтение и запись",
+          "when": "Для обмена таблицей в текстовом файле.",
+          "rule": "reader/writer работают со строками-списками, DictReader/DictWriter — со словарями по именам столбцов.",
+          "code": "import csv\nfrom io import StringIO\n\nfile = StringIO(\"name,price\\nBook,100\\n\")\nrows = list(csv.DictReader(file))\nprice = int(rows[0][\"price\"])  # 100",
+          "language": "python",
+          "error": "csv читает значения как строки; числа преобразуй явно. Не разбивай CSV обычным split(\",\").",
+          "details": [
+            "Для реального файла: open(path, newline=\"\", encoding=\"utf-8\"). newline=\"\" важен для правильной обработки переводов строк.",
+            "csv.writer(file).writerow(row) пишет одну строку; writerows(rows) — несколько. DictWriter требует fieldnames; writeheader() пишет заголовок.",
+            "delimiter=\";\" меняет разделитель; кавычки обрабатываются библиотекой."
+          ],
+          "terms": [
+            "csv",
+            "reader",
+            "writer",
+            "DictReader",
+            "DictWriter",
+            "delimiter"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "dataframe",
+          "title": "DataFrame и Series",
+          "when": "Когда анализируешь таблицу.",
+          "rule": "DataFrame — таблица, Series — один столбец с индексом. read_csv/read_excel загружают данные.",
+          "code": "# На таблице df из «Данных для примеров»\nprices = df[\"price\"]       # Series\ntable = df[[\"city\", \"price\"]]  # DataFrame\ncount = len(df)",
+          "language": "python",
+          "error": "df[\"price\"] и df[[\"price\"]] имеют разные типы и размерность.",
+          "details": [
+            "Установка: poetry add pandas. CSV: pd.read_csv(\"data.csv\"); Excel: pd.read_excel(\"data.xlsx\") с подходящим движком чтения.",
+            "Просмотр: head(), shape, columns, dtypes. Индекс не обязательно совпадает с номерами строк."
+          ],
+          "terms": [
+            "pandas",
+            "pd",
+            "DataFrame",
+            "Series",
+            "read_csv",
+            "read_excel"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "selection",
+          "title": "loc, iloc и индекс",
+          "when": "Когда выбираешь строки и столбцы.",
+          "rule": "loc обращается по меткам, iloc — по позициям. У loc конец среза меток включается, у iloc — нет.",
+          "code": "first_price = df.loc[0, \"price\"]  # 100\nfirst_two = df.iloc[:2]\nby_city = df.set_index(\"city\")",
+          "language": "python",
+          "error": "set_index по умолчанию возвращает новую таблицу; исходный df не меняется.",
+          "details": [
+            "loc[rows, columns] выбирает метки или маску. iloc[rows, columns] принимает целочисленные позиции.",
+            "Индекс может содержать дубликаты; выбор одной метки тогда возвращает несколько строк."
+          ],
+          "terms": [
+            "loc",
+            "iloc",
+            "set_index",
+            "индексация"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "filter",
+          "title": "Условия и присваивание",
+          "when": "Чтобы отобрать и изменить часть таблицы.",
+          "rule": "Каждое условие бери в скобки; для Series используй & (и), | (или), ~ (не). Изменяй через один loc.",
+          "code": "mask = (df[\"price\"] >= 200) & (df[\"qty\"] > 1)\nselected = df.loc[mask]\ndf.loc[mask, \"price\"] = 250\nallowed = df.loc[df[\"city\"].isin([\"Москва\"])]",
+          "language": "python",
+          "error": "and/or не объединяют маски Series. Не используй цепочку df[mask][\"price\"] = value.",
+          "details": [
+            "notna()/notnull() отбирают непустые значения; isna() — пропуски. Для нового столбца: df[\"total\"] = df[\"price\"] * df[\"qty\"].",
+            "Пустую выборку обрабатывай как нормальный случай. Для исключения городов используй ~df[\"city\"].isin(...)."
+          ],
+          "terms": [
+            "filter",
+            "маска",
+            "isin",
+            "notnull",
+            "notna",
+            "присваивание"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "statistics",
+          "title": "Статистика, map и apply",
+          "when": "Когда нужны сводные данные и преобразования.",
+          "rule": "describe — сводка; mean — среднее; unique — значения без повторов; value_counts — их частоты.",
+          "code": "mean_price = df[\"price\"].mean()  # 200\ncounts = df[\"city\"].value_counts()\ndouble = df[\"price\"].map(lambda x: x * 2)\ntotals = df.apply(lambda row: row[\"price\"] * row[\"qty\"], axis=1)",
+          "language": "python",
+          "error": "apply(axis=1) обрабатывает строки; axis=0 — столбцы.",
+          "details": [
+            "Для простого расчёта векторное df[\"price\"] * df[\"qty\"] обычно яснее, чем apply.",
+            "describe для числового столбца включает count, mean, std, min, квартили и max."
+          ],
+          "terms": [
+            "describe",
+            "mean",
+            "unique",
+            "value_counts",
+            "map",
+            "apply",
+            "axis"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "groups",
+          "title": "Группировка, агрегация, сортировка",
+          "when": "Чтобы сравнить категории.",
+          "rule": "groupby задаёт группы; agg вычисляет показатели; sort_values упорядочивает итог.",
+          "code": "result = (df.groupby(\"city\")\n            .agg(total=(\"price\", \"sum\"),\n                 average=(\"price\", \"mean\"))\n            .sort_values(\"total\", ascending=False))",
+          "language": "python",
+          "error": "groupby сам по себе ещё не итоговая таблица: нужна агрегация или другая операция.",
+          "details": [
+            "Можно группировать по нескольким столбцам: groupby([\"store\", \"date\"]). Фильтрация до группировки и после неё отвечает на разные вопросы.",
+            "iterrows() перебирает строки, items() — столбцы. Для расчётов предпочитай операции над столбцами; перебор может менять представление типов."
+          ],
+          "terms": [
+            "groupby",
+            "agg",
+            "sort_values",
+            "iterrows",
+            "items",
+            "группировка",
+            "сортировка"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ],
+      "setup": "import pandas as pd\ndf = pd.DataFrame({\n    \"city\": [\"Москва\", \"Казань\", \"Москва\"],\n    \"price\": [100, 200, 300], \"qty\": [2, 1, 3]\n})"
+    },
+    {
+      "id": "260187",
+      "moduleId": "m3",
+      "number": "13.2",
+      "title": "Библиотеки re, collections, random",
+      "kind": "lesson",
+      "summary": "re ищет шаблоны; collections даёт счётчики и очереди; random помогает выбирать и перемешивать элементы.",
+      "sources": [
+        {
+          "title": "14 Шпаргалка",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260187/theory/14"
+        },
+        {
+          "title": "15 Конспект",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260187/theory/15"
+        }
+      ],
+      "topics": [
+        {
+          "id": "regex",
+          "title": "Синтаксис регулярных выражений",
+          "when": "Для поиска и проверки формата текста.",
+          "rule": "Используй raw-строки r\"...\": точка — любой символ, [] — класс, \\d — цифра, \\w — слово, \\s — пробел.",
+          "code": "import re\nvalid = re.fullmatch(r\"\\d{4}-\\d{2}-\\d{2}\", \"2026-10-14\")\nfound = re.findall(r\"\\b\\w+\\b\", \"Два слова\")",
+          "language": "python",
+          "error": "Шаблон даты проверяет форму, но не календарную корректность: 2026-99-99 тоже совпадёт.",
+          "details": [
+            "^ и $ — границы; * — 0+, + — 1+, ? — 0/1, {m,n} — количество; | — альтернатива; () — группа.",
+            "Квантификаторы обычно жадные; добавление ? делает их ленивыми. Литерал точки — \\.",
+            "re.I игнорирует регистр, re.S разрешает точке совпасть с переводом строки, re.M меняет ^/$, re.X позволяет комментарии и форматирование шаблона."
+          ],
+          "terms": [
+            "regex",
+            "regexp",
+            "регулярное выражение",
+            "квантификатор",
+            "flags"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "re-methods",
+          "title": "search, match, fullmatch, compile",
+          "when": "Когда выбираешь способ поиска.",
+          "rule": "search — где угодно; match — с начала; fullmatch — вся строка; findall — совпадения; finditer — объекты совпадений.",
+          "code": "import re\npattern = re.compile(r\"(\\d+)\")\nmatch = pattern.search(\"Цена: 120\")\nnumber = match.group(1) if match else None\ntext, count = pattern.subn(\"#\", \"A1 B2\")",
+          "language": "python",
+          "error": "search может вернуть None: сначала проверь результат, затем вызывай group().",
+          "details": [
+            "Группы: group(0) — всё совпадение, group(1) — первая группа; (?:...) не захватывает. Захватывающие группы меняют форму результата findall.",
+            "split разбивает по шаблону; sub заменяет; subn также возвращает число замен. repl может быть строкой или функцией.",
+            "У скомпилированного шаблона pos/endpos ограничивают область поиска; maxsplit ограничивает разделения, count — замены."
+          ],
+          "terms": [
+            "search",
+            "match",
+            "fullmatch",
+            "findall",
+            "finditer",
+            "compile",
+            "sub",
+            "subn",
+            "split",
+            "group"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "counter",
+          "title": "Counter и defaultdict",
+          "when": "Для подсчёта и группировки.",
+          "rule": "Counter считает хешируемые элементы; defaultdict создаёт значение отсутствующего ключа фабрикой.",
+          "code": "from collections import Counter, defaultdict\n\ncounts = Counter(\"banana\")\ntop = counts.most_common(1)  # [(\"a\", 3)]\ngroups = defaultdict(list)\ngroups[\"fruit\"].append(\"apple\")",
+          "language": "python",
+          "error": "В defaultdict передавай list, а не list(): нужен вызываемый объект.",
+          "details": [
+            "Counter возвращает 0 для отсутствующего элемента. Для подсчёта без учёта регистра нормализуй строку заранее.",
+            "defaultdict.get() не вызывает фабрику; создание значения происходит при доступе через квадратные скобки."
+          ],
+          "terms": [
+            "Counter",
+            "defaultdict",
+            "most_common",
+            "счётчик",
+            "группировка"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "deque",
+          "title": "deque и namedtuple",
+          "when": "Для очередей и небольших записей.",
+          "rule": "deque эффективно добавляет/удаляет элементы с обоих концов; namedtuple создаёт неизменяемую запись с именами полей.",
+          "code": "from collections import deque, namedtuple\n\nqueue = deque([1, 2])\nqueue.append(3)\nfirst = queue.popleft()  # 1\nPoint = namedtuple(\"Point\", \"x y\")\npoint = Point(2, 3)",
+          "language": "python",
+          "error": "popleft() пустой очереди вызывает IndexError; поля namedtuple нельзя переназначить.",
+          "details": [
+            "appendleft/pop работают с другим концом. deque(maxlen=n) автоматически вытесняет элемент с противоположного конца при переполнении.",
+            "К полю можно обращаться point.x или point[0]."
+          ],
+          "terms": [
+            "deque",
+            "namedtuple",
+            "queue",
+            "FIFO",
+            "очередь"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "random",
+          "title": "Выбор и перемешивание",
+          "when": "Для случайных примеров и моделирования.",
+          "rule": "random() даёт [0,1); randint(a,b) включает обе границы; choice выбирает элемент; shuffle меняет список на месте.",
+          "code": "import random\n\nrng = random.Random(42)\nnumber = rng.randint(1, 6)\nitem = rng.choice([\"a\", \"b\", \"c\"])\ncards = [1, 2, 3]\nrng.shuffle(cards)",
+          "language": "python",
+          "error": "shuffle возвращает None. choice пустой последовательности вызывает IndexError.",
+          "details": [
+            "Фиксированный seed помогает воспроизвести эксперимент в одинаковой среде. Для паролей и токенов используют secrets, а не random."
+          ],
+          "terms": [
+            "random",
+            "randint",
+            "choice",
+            "shuffle",
+            "seed",
+            "случайный"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "260188",
+      "moduleId": "m3",
+      "number": "",
+      "title": "Дополнительная практика",
+      "kind": "practice",
+      "summary": "При интеграции библиотек разделяй загрузку, проверку, преобразование и анализ данных; тестируй сбои отдельно.",
+      "sources": [
+        {
+          "title": "2 Задачи на закрепление базовых навыков",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260188/theory/2"
+        },
+        {
+          "title": "3 Задачи к уроку «Библиотеки json, requests и datetime»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260188/theory/3"
+        },
+        {
+          "title": "4 Задачи к уроку «Библиотека logging»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260188/theory/4"
+        },
+        {
+          "title": "5 Задачи к уроку «Библиотеки csv и pandas»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260188/theory/5"
+        },
+        {
+          "title": "6 Задачи к уроку «Библиотеки re, collections, random»",
+          "url": "https://my-singularity.sky.pro/student-cabinet/stream-lesson/260188/theory/6"
+        }
+      ],
+      "topics": [
+        {
+          "id": "retry",
+          "title": "Запросы, проверка ответа и retry",
+          "when": "Когда API иногда недоступен.",
+          "rule": "Повторяй только временные ошибки и ограничивай число попыток; проверяй нужные поля ответа.",
+          "code": "def extract_temperature(data):\n    main = data.get(\"main\")\n    if not isinstance(main, dict):\n        return None\n    return main.get(\"temp\")",
+          "language": "python",
+          "error": "Пустое поле, отсутствующий ключ и сетевой сбой — разные случаи. Не делай бесконечный retry.",
+          "details": [
+            "В задании retry параметр задаёт количество попыток, пауза — 1 секунда. Уточни, включает ли лимит первый вызов, и зафиксируй это тестом.",
+            "В тестах подмени запрос и ожидание: side_effect=[ошибка, успешный_ответ] позволяет проверить восстановление.",
+            "При анализе JSON-продаж сначала разбери дату, затем сгруппируй суммы по weekday()."
+          ],
+          "terms": [
+            "retry",
+            "повтор",
+            "API",
+            "weather",
+            "температура",
+            "mock"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "daily-logs",
+          "title": "Логи в консоль и файл",
+          "when": "Чтобы диагностировать ежедневную обработку.",
+          "rule": "Настрой два обработчика один раз; имя файла можно получить из даты.",
+          "code": "from datetime import date\nimport logging\n\nfilename = f\"{date.today():%Y-%m-%d}.log\"\nhandler = logging.FileHandler(filename, encoding=\"utf-8\")\nhandler.setLevel(logging.WARNING)\nhandler.close()",
+          "language": "python",
+          "error": "Если логер отсекает WARNING, обработчик уже не сможет восстановить это сообщение.",
+          "details": [
+            "Установка WARNING на FileHandler не меняет порог самого Logger. Formatter с %(asctime)s добавляет время.",
+            "Имя файла с датой при старте не переключается автоматически в полночь; для длительного процесса нужна ротация или явное переключение."
+          ],
+          "terms": [
+            "logging",
+            "дневной лог",
+            "FileHandler",
+            "ротация"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "analysis",
+          "title": "Анализ CSV/JSON через pandas",
+          "when": "Когда считаешь показатели по категориям.",
+          "rule": "Приведи типы, обработай пропуски, отфильтруй данные, сгруппируй и посчитай показатели.",
+          "code": "import pandas as pd\n\ndf = pd.DataFrame({\"class\": [1, 1, 2], \"survived\": [1, 0, 1]})\nsurvival = df.groupby(\"class\")[\"survived\"].mean()\n# class 1 → 0.5; class 2 → 1.0",
+          "language": "python",
+          "error": "Среднее по столбцу 0/1 даёт долю; sum() — количество, а не долю.",
+          "details": [
+            "Для продаж: pd.to_datetime(df[\"date\"]) → groupby([\"store\", \"date\"]) → нужная агрегация.",
+            "В задании по пассажирам: (fare > 50) & (age < 30), затем sort_values(\"name\").",
+            "До fillna/dropna реши, что означает пропуск. Не подменяй неизвестный возраст нулём автоматически.",
+            "Для JSON-списка записей: pd.DataFrame(json.load(file))."
+          ],
+          "terms": [
+            "pandas",
+            "CSV",
+            "JSON",
+            "survived",
+            "Titanic",
+            "fillna",
+            "dropna",
+            "to_datetime"
+          ],
+          "check": "run",
+          "references": []
+        },
+        {
+          "id": "text-processing",
+          "title": "Нормализация, поиск и частоты",
+          "when": "Когда ищешь частые слова или буквы.",
+          "rule": "Нормализуй регистр, отбирай нужные символы, считай через Counter; равенства частот обрабатывай явно.",
+          "code": "from collections import Counter\n\ncounts = Counter(c for c in \"Аба12\".lower() if c.isalpha())\nmaximum = max(counts.values(), default=0)\nleaders = sorted(c for c, n in counts.items() if n == maximum)",
+          "language": "python",
+          "error": "most_common(1) не возвращает всех лидеров при одинаковой частоте.",
+          "details": [
+            "Для выбора файла: отфильтруй список реальных файлов, составь полный путь, проверь непустой список перед random.choice.",
+            "Для замены дат недостаточно переставить разделители: выясни, какой порядок месяца и дня у входа, и проверь календарную корректность через datetime.",
+            "Проверка email регулярным выражением в учебной задаче — проверка выбранного формата, а не доказательство существования адреса."
+          ],
+          "terms": [
+            "Counter",
+            "буква",
+            "частота",
+            "email",
+            "даты",
+            "регистр"
+          ],
+          "check": "run",
+          "references": []
+        }
+      ]
+    }
+  ]
+}
