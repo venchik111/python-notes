@@ -1,0 +1,96 @@
+{
+  "260175": [
+    "tools",
+    "platform",
+    "pycharm"
+  ],
+  "260176": [
+    "imports",
+    "venv",
+    "paths",
+    "files",
+    "structure"
+  ],
+  "260177": [
+    "poetry",
+    "pep8",
+    "typing",
+    "quality"
+  ],
+  "260178": [
+    "git-start",
+    "ignore",
+    "history",
+    "undo"
+  ],
+  "260179": [
+    "remote",
+    "branches",
+    "merge",
+    "gitflow",
+    "readme"
+  ],
+  "260180": [
+    "tests",
+    "raises",
+    "fixtures",
+    "parametrize",
+    "coverage"
+  ],
+  "260181": [
+    "iterator",
+    "pipeline",
+    "comprehension",
+    "expression",
+    "yield",
+    "generator-tests"
+  ],
+  "260182": [
+    "closure",
+    "decorator",
+    "parameters",
+    "order",
+    "decorator-tests"
+  ],
+  "260183": [
+    "boundaries",
+    "sequence",
+    "memo",
+    "review"
+  ],
+  "260184": [
+    "json",
+    "http",
+    "request-errors",
+    "env",
+    "mock",
+    "datetime",
+    "time"
+  ],
+  "260185": [
+    "levels",
+    "handlers",
+    "exceptions"
+  ],
+  "260186": [
+    "csv",
+    "dataframe",
+    "selection",
+    "filter",
+    "statistics",
+    "groups"
+  ],
+  "260187": [
+    "regex",
+    "re-methods",
+    "counter",
+    "deque",
+    "random"
+  ],
+  "260188": [
+    "retry",
+    "daily-logs",
+    "analysis",
+    "text-processing"
+  ]
+}

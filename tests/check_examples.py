@@ -4,7 +4,6 @@ import contextlib
 import io
 import json
 import os
-import runpy
 import tempfile
 from pathlib import Path
 
@@ -18,16 +17,23 @@ with tempfile.TemporaryDirectory(prefix='python-notes-check-') as scratch:
     try:
         for lesson in data['lessons']:
             for topic in lesson['topics']:
-                if topic['language']!='python':continue
-                label=f"{lesson['id']}/{topic['id']}"
-                ast.parse(topic['code'],filename=label)
+              examples=[dict(topic,original=True)]+[b for b in topic.get('blocks',[]) if b['type']=='example']
+              if topic.get('demo',{}).get('language')=='python':
+                examples.append(dict(language='python',code=topic['demo']['code'],check='run'))
+              for example_index,example in enumerate(examples):
+                if example['language']!='python':continue
+                label=f"{lesson['id']}/{topic['id']}/{example_index}"
+                ast.parse(example['code'],filename=label)
                 compiled+=1
-                code=lesson.get('setup','')+'\n'+topic['code']
-                if topic['check']=='run':
+                code=(lesson.get('setup','') if example.get('original') else '')+'\n'+example['code']
+                if example['check']=='run':
                     namespace={}
-                    with contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+                    output=io.StringIO()
+                    with contextlib.redirect_stdout(output),contextlib.redirect_stderr(io.StringIO()):
                         exec(compile(code,label,'exec'),namespace)
                     executed+=1
+                    if 'output' in example:assert output.getvalue()==example['output'],f"{label}: {output.getvalue()!r} != {example['output']!r}"
+                    if not example.get('original'):continue
                     if topic['id']=='expression':
                         assert namespace['first']==0 and namespace['rest']==[1,4] and namespace['empty']==[]
                     if topic['id']=='pipeline':assert namespace['result']==[20,40]
@@ -49,8 +55,8 @@ with tempfile.TemporaryDirectory(prefix='python-notes-check-') as scratch:
                     if topic['id']=='counter':assert namespace['top']==[('a',3)]
                     if topic['id']=='text-processing':assert namespace['leaders']==['а']
                     if topic['id']=='analysis':assert namespace['survival'].loc[1]==0.5
-                elif topic['check']=='pytest':
-                    Path(f"test_{lesson['id']}_{topic['id'].replace('-','_')}.py").write_text(code)
+                elif example['check']=='pytest':
+                    Path(f"test_{lesson['id']}_{topic['id'].replace('-','_')}_{example_index}.py").write_text(code)
                     test_files+=1
         import pytest
         status=pytest.main(['-q','--disable-warnings',scratch])

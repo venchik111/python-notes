@@ -89,6 +89,50 @@ function references(items, className = 'references') {
   }
   return box;
 }
+function richBlock(block, query) {
+  const box = el('div', `reading-block reading-${block.type}`);
+  if (block.type === 'paragraph') box.append(highlighted('p','',block.text,query));
+  if (block.type === 'heading') box.append(highlighted('h3','',block.text,query));
+  if (block.type === 'list') {
+    if (block.title) box.append(el('h3','',block.title));
+    const list=el('ul');for(const item of block.items) list.append(highlighted('li','',item,query));box.append(list);
+  }
+  if (block.type === 'table') {
+    const scroll=el('div','table-scroll');scroll.tabIndex=0;scroll.setAttribute('role','region');
+    scroll.setAttribute('aria-label',block.title || 'Таблица сравнения');
+    const table=el('table','rich-table');const head=el('thead');const row=el('tr');
+    for(const text of block.headers){const th=highlighted('th','',text,query);th.scope='col';row.append(th);}
+    head.append(row);const body=el('tbody');
+    for(const values of block.rows){const tr=el('tr');values.forEach(value=>tr.append(highlighted('td','',String(value),query)));body.append(tr);}
+    table.append(head,body);scroll.append(table);box.append(scroll);
+  }
+  if (block.type === 'example') {
+    box.append(codeBlock(block.code,block.language,query));
+    if(block.output !== undefined){
+      const output=el('div','example-output');output.append(el('span','output-label','Результат'));
+      const pre=el('pre');pre.tabIndex=0;pre.append(highlighted('code','',block.output || '(нет вывода)',query));output.append(pre);box.append(output);
+    }
+  }
+  if (block.type === 'link' && block.href.startsWith('#lesson=')) box.append(link(block.text,block.href,'topic-demo-link'));
+  return box;
+}
+function demoSlot(spec,query) {
+  const slot=el('section','demo-slot');slot.dataset.demo=spec.type;slot.setAttribute('aria-label',spec.title);
+  const mount=async()=>{
+    slot.replaceChildren(el('p','when','Загружаем интерактивный разбор…'));
+    try{
+      const module=await import('./demos/widgets.js');
+      if(slot.isConnected) await module.mountDemo(slot,{...spec,query});
+    }catch{
+      if(!slot.isConnected)return;
+      const retry=el('button','retry-button','Повторить');retry.type='button';retry.addEventListener('click',mount);
+      slot.replaceChildren(el('h3','',spec.title),el('p','','Демонстрация не загрузилась. Текст и примеры выше доступны.'),retry);
+      if(spec.code) slot.append(codeBlock(spec.code,spec.language,query));
+      if(spec.output) slot.append(highlighted('pre','fallback-output',spec.output,query));
+    }
+  };
+  requestAnimationFrame(mount);return slot;
+}
 function menu(open, restoreFocus = true) {
   const isOpen = open && mobile.matches;
   sidebar.classList.toggle('open', isOpen);
@@ -158,6 +202,7 @@ function overview() {
     el('p', 'lead', 'Найди нужную тему, вспомни правило, посмотри пример. Уроки — в порядке курса, поиск — по всей базе.'));
   const stats = el('div', 'stats-line');
   stats.append(el('span', '', `${data.lessons.length} занятий`),el('span', '', `${index.length} тем`),
+    el('span', '', `${data.lessons.flatMap(l=>l.topics).filter(t=>t.demo).length} интерактивных разборов`),
     el('span', '', `Обновлено ${data.updatedAt.split('-').reverse().join('.')}`));
   content.append(stats);
   for (const module of data.modules) {
@@ -201,10 +246,11 @@ function lessonPage(lesson, query) {
   content.append(crumb,el('h1','',lesson.title),el('p','lead',lesson.summary));
   const outline = el('nav','topics-nav');outline.setAttribute('aria-label','Темы урока');
   for (const topic of lesson.topics) outline.append(link(topic.title,url(lesson.id,topic.id,query)));
+  for (const topic of lesson.topics.filter(t=>t.demo)) outline.append(link(`Интерактив: ${topic.demo.title}`,url(lesson.id,topic.id,query)+'&demo=1'));
   content.append(outline);
   if (lesson.setup) {
-    const setup = el('details','setup');setup.append(el('summary','','Данные для примеров в этом уроке'),
-      el('p','when','Примеры с df используют эту таблицу. Выполни её создание перед выбранным примером.'),codeBlock(lesson.setup,'python',query));
+    const setup = el('section','setup');setup.append(el('h3','','Данные для примеров в этом уроке'),
+      el('p','when','Короткие примеры в начале тем используют эту таблицу. Разобранные примеры ниже создают свои данные и запускаются отдельно.'),codeBlock(lesson.setup,'python',query));
     content.append(setup);
   }
   lesson.topics.forEach((topic, position) => {
@@ -213,17 +259,20 @@ function lessonPage(lesson, query) {
     const title = el('h2'); const a = link('',url(lesson.id,topic.id,query));
     a.append(highlighted('span','',topic.title,query));title.append(a);
     heading.append(el('span','topic-index',String(position+1).padStart(2,'0')),title);
+    if(topic.demo) section.append(link('Перейти к интерактивному разбору ↓',url(lesson.id,topic.id,query)+'&demo=1','topic-demo-link'));
     section.append(heading,highlighted('p','when',topic.when,query),highlighted('p','rule',topic.rule,query),
       codeBlock(topic.code,topic.language,query));
+    for(const block of topic.blocks || []) section.append(richBlock(block,query));
     const error = el('p','pitfall');error.append(el('strong','','Частая ошибка.'),document.createTextNode(' '),highlighted('span','',topic.error,query));section.append(error);
     if (topic.details.length) {
-      const details = el('details');details.append(el('summary','','Пояснения и нюансы'));
+      const details = el('details');details.append(el('summary','','Дополнительные нюансы'));
       const body = el('div','details-body');
       topic.details.forEach(text=>body.append(highlighted('p','',text,query)));
       details.open = tokens(query).some(word=>normalize(topic.details.join(' ')).includes(word));
       details.append(body);section.append(details);
     }
     if (topic.references.length) section.append(references(topic.references));
+    if (topic.demo) section.append(demoSlot(topic.demo,query));
     content.append(section);
   });
   const footer = el('footer','source-footer');
@@ -250,7 +299,8 @@ function render(options = {}) {
   if (options.scroll) window.scrollTo({top:0,behavior:'instant'});
   if (options.focus) content.focus({preventScroll:true});
   if (lesson && topicId) {
-    const target = document.getElementById(`topic-${topicId}`);
+    const topicTarget = document.getElementById(`topic-${topicId}`);
+    const target = params.get('demo') ? topicTarget?.querySelector('.demo-slot') || topicTarget : topicTarget;
     if (target) requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'instant'}));
     else announcer.textContent='Тема не найдена. Показан урок целиком.';
   }

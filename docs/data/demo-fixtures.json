@@ -1,0 +1,2427 @@
+{
+  "generators": {
+    "0": [
+      {
+        "state": "GEN_CREATED",
+        "locals": {
+          "n": 0
+        },
+        "values": [],
+        "line": 6,
+        "result": "—"
+      },
+      {
+        "state": "GEN_CLOSED",
+        "locals": {},
+        "values": [],
+        "line": 0,
+        "result": "StopIteration"
+      }
+    ],
+    "1": [
+      {
+        "state": "GEN_CREATED",
+        "locals": {
+          "n": 1
+        },
+        "values": [],
+        "line": 6,
+        "result": "—"
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 1
+        },
+        "values": [
+          1
+        ],
+        "line": 3,
+        "result": 1
+      },
+      {
+        "state": "GEN_CLOSED",
+        "locals": {},
+        "values": [
+          1
+        ],
+        "line": 0,
+        "result": "StopIteration"
+      }
+    ],
+    "2": [
+      {
+        "state": "GEN_CREATED",
+        "locals": {
+          "n": 2
+        },
+        "values": [],
+        "line": 6,
+        "result": "—"
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 2
+        },
+        "values": [
+          2
+        ],
+        "line": 3,
+        "result": 2
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 1
+        },
+        "values": [
+          2,
+          1
+        ],
+        "line": 3,
+        "result": 1
+      },
+      {
+        "state": "GEN_CLOSED",
+        "locals": {},
+        "values": [
+          2,
+          1
+        ],
+        "line": 0,
+        "result": "StopIteration"
+      }
+    ],
+    "3": [
+      {
+        "state": "GEN_CREATED",
+        "locals": {
+          "n": 3
+        },
+        "values": [],
+        "line": 6,
+        "result": "—"
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 3
+        },
+        "values": [
+          3
+        ],
+        "line": 3,
+        "result": 3
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 2
+        },
+        "values": [
+          3,
+          2
+        ],
+        "line": 3,
+        "result": 2
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 1
+        },
+        "values": [
+          3,
+          2,
+          1
+        ],
+        "line": 3,
+        "result": 1
+      },
+      {
+        "state": "GEN_CLOSED",
+        "locals": {},
+        "values": [
+          3,
+          2,
+          1
+        ],
+        "line": 0,
+        "result": "StopIteration"
+      }
+    ],
+    "4": [
+      {
+        "state": "GEN_CREATED",
+        "locals": {
+          "n": 4
+        },
+        "values": [],
+        "line": 6,
+        "result": "—"
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 4
+        },
+        "values": [
+          4
+        ],
+        "line": 3,
+        "result": 4
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 3
+        },
+        "values": [
+          4,
+          3
+        ],
+        "line": 3,
+        "result": 3
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 2
+        },
+        "values": [
+          4,
+          3,
+          2
+        ],
+        "line": 3,
+        "result": 2
+      },
+      {
+        "state": "GEN_SUSPENDED",
+        "locals": {
+          "n": 1
+        },
+        "values": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "line": 3,
+        "result": 1
+      },
+      {
+        "state": "GEN_CLOSED",
+        "locals": {},
+        "values": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "line": 0,
+        "result": "StopIteration"
+      }
+    ]
+  },
+  "decorators": {
+    "double-first|-10": -12,
+    "double-first|-9": -10,
+    "double-first|-8": -8,
+    "double-first|-7": -6,
+    "double-first|-6": -4,
+    "double-first|-5": -2,
+    "double-first|-4": 0,
+    "double-first|-3": 2,
+    "double-first|-2": 4,
+    "double-first|-1": 6,
+    "double-first|0": 8,
+    "double-first|1": 10,
+    "double-first|2": 12,
+    "double-first|3": 14,
+    "double-first|4": 16,
+    "double-first|5": 18,
+    "double-first|6": 20,
+    "double-first|7": 22,
+    "double-first|8": 24,
+    "double-first|9": 26,
+    "double-first|10": 28,
+    "plus-first|-10": -15,
+    "plus-first|-9": -13,
+    "plus-first|-8": -11,
+    "plus-first|-7": -9,
+    "plus-first|-6": -7,
+    "plus-first|-5": -5,
+    "plus-first|-4": -3,
+    "plus-first|-3": -1,
+    "plus-first|-2": 1,
+    "plus-first|-1": 3,
+    "plus-first|0": 5,
+    "plus-first|1": 7,
+    "plus-first|2": 9,
+    "plus-first|3": 11,
+    "plus-first|4": 13,
+    "plus-first|5": 15,
+    "plus-first|6": 17,
+    "plus-first|7": 19,
+    "plus-first|8": 21,
+    "plus-first|9": 23,
+    "plus-first|10": 25
+  },
+  "git": {
+    "workflow": [
+      {
+        "command": "Начальное состояние",
+        "explanation": "В коммите A, индексе и рабочей папке одинаковая версия v1.",
+        "working": {
+          "note.txt": "v1"
+        },
+        "index": {
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "Изменить note.txt → v2",
+        "explanation": "Редактирование меняет только рабочий файл.",
+        "working": {
+          "note.txt": "v2"
+        },
+        "index": {
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "git add note.txt",
+        "explanation": "В индекс скопирована версия v2.",
+        "working": {
+          "note.txt": "v2"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "Изменить note.txt → v3",
+        "explanation": "В индексе по-прежнему v2, а на диске уже v3.",
+        "working": {
+          "note.txt": "v3"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "git commit -m B",
+        "explanation": "Коммит B содержит v2 из индекса. Незакоммиченная v3 остаётся на диске.",
+        "working": {
+          "note.txt": "v3"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "B",
+        "branch": "main",
+        "refs": {
+          "main": "B"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          }
+        ],
+        "reachable": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git add note.txt",
+        "explanation": "Теперь подготовлена версия v3.",
+        "working": {
+          "note.txt": "v3"
+        },
+        "index": {
+          "note.txt": "v3"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "B",
+        "branch": "main",
+        "refs": {
+          "main": "B"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          }
+        ],
+        "reachable": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git commit -m C",
+        "explanation": "Все три слоя совпадают с коммитом C: v3.",
+        "working": {
+          "note.txt": "v3"
+        },
+        "index": {
+          "note.txt": "v3"
+        },
+        "headFiles": {
+          "note.txt": "v3"
+        },
+        "head": "C",
+        "branch": "main",
+        "refs": {
+          "main": "C"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "C",
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "soft": [
+      {
+        "command": "До отмены",
+        "explanation": "Для reset индекс содержит staged, рабочий файл — draft.",
+        "working": {
+          "note.txt": "draft"
+        },
+        "index": {
+          "note.txt": "staged"
+        },
+        "headFiles": {
+          "note.txt": "v3"
+        },
+        "head": "C",
+        "branch": "main",
+        "refs": {
+          "main": "C"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "C",
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git reset --soft HEAD~1",
+        "explanation": "HEAD у B, но индекс staged и рабочий draft сохранены.",
+        "working": {
+          "note.txt": "draft"
+        },
+        "index": {
+          "note.txt": "staged"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "B",
+        "branch": "main",
+        "refs": {
+          "main": "B"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "mixed": [
+      {
+        "command": "До отмены",
+        "explanation": "Для reset индекс содержит staged, рабочий файл — draft.",
+        "working": {
+          "note.txt": "draft"
+        },
+        "index": {
+          "note.txt": "staged"
+        },
+        "headFiles": {
+          "note.txt": "v3"
+        },
+        "head": "C",
+        "branch": "main",
+        "refs": {
+          "main": "C"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "C",
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git reset --mixed HEAD~1",
+        "explanation": "HEAD у B, индекс стал v2, рабочий draft сохранён.",
+        "working": {
+          "note.txt": "draft"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "B",
+        "branch": "main",
+        "refs": {
+          "main": "B"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "hard": [
+      {
+        "command": "До отмены",
+        "explanation": "Для reset индекс содержит staged, рабочий файл — draft.",
+        "working": {
+          "note.txt": "draft"
+        },
+        "index": {
+          "note.txt": "staged"
+        },
+        "headFiles": {
+          "note.txt": "v3"
+        },
+        "head": "C",
+        "branch": "main",
+        "refs": {
+          "main": "C"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "C",
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git reset --hard HEAD~1",
+        "explanation": "HEAD, индекс и рабочий файл приведены к B (v2). Отслеживаемые незакоммиченные правки отброшены.",
+        "working": {
+          "note.txt": "v2"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "B",
+        "branch": "main",
+        "refs": {
+          "main": "B"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "revert": [
+      {
+        "command": "До отмены",
+        "explanation": "Для revert рабочая папка чистая: HEAD, индекс и файлы содержат v3.",
+        "working": {
+          "note.txt": "v3"
+        },
+        "index": {
+          "note.txt": "v3"
+        },
+        "headFiles": {
+          "note.txt": "v3"
+        },
+        "head": "C",
+        "branch": "main",
+        "refs": {
+          "main": "C"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          }
+        ],
+        "reachable": [
+          "C",
+          "B",
+          "A"
+        ]
+      },
+      {
+        "command": "git revert HEAD",
+        "explanation": "Создан R после C. Изменение C компенсировано: файл снова v2, история A → B → C → R сохранена.",
+        "working": {
+          "note.txt": "v2"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "R",
+        "branch": "main",
+        "refs": {
+          "main": "R"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "B",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "C",
+            "parents": [
+              "B"
+            ]
+          },
+          {
+            "id": "R",
+            "parents": [
+              "C"
+            ]
+          }
+        ],
+        "reachable": [
+          "R",
+          "C",
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "merge": [
+      {
+        "command": "Начальное состояние",
+        "explanation": "main указывает на A.",
+        "working": {
+          "note.txt": "v1"
+        },
+        "index": {
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "git switch -c feature",
+        "explanation": "Обе ветки у A; текущая — feature.",
+        "working": {
+          "note.txt": "v1"
+        },
+        "index": {
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "feature",
+        "refs": {
+          "feature": "A",
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "git add .; git commit -m F",
+        "explanation": "Коммит F передвинул только feature.",
+        "working": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v1"
+        },
+        "index": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v1"
+        },
+        "head": "F",
+        "branch": "feature",
+        "refs": {
+          "feature": "F",
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "F",
+            "parents": [
+              "A"
+            ]
+          }
+        ],
+        "reachable": [
+          "F",
+          "A"
+        ]
+      },
+      {
+        "command": "git switch main",
+        "explanation": "HEAD снова у main/A. Файл feature.txt отсутствует в этой версии.",
+        "working": {
+          "note.txt": "v1"
+        },
+        "index": {
+          "note.txt": "v1"
+        },
+        "headFiles": {
+          "note.txt": "v1"
+        },
+        "head": "A",
+        "branch": "main",
+        "refs": {
+          "feature": "F",
+          "main": "A"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "F",
+            "parents": [
+              "A"
+            ]
+          }
+        ],
+        "reachable": [
+          "A"
+        ]
+      },
+      {
+        "command": "git add .; git commit -m M",
+        "explanation": "Истории разошлись от A: main у M, feature у F.",
+        "working": {
+          "note.txt": "v2"
+        },
+        "index": {
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "note.txt": "v2"
+        },
+        "head": "M",
+        "branch": "main",
+        "refs": {
+          "feature": "F",
+          "main": "M"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "F",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "M",
+            "parents": [
+              "A"
+            ]
+          }
+        ],
+        "reachable": [
+          "M",
+          "A"
+        ]
+      },
+      {
+        "command": "git merge feature",
+        "explanation": "Создан коммит R с родителями M и F. Изменения разных файлов объединились без конфликта.",
+        "working": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v2"
+        },
+        "index": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v2"
+        },
+        "headFiles": {
+          "feature.txt": "новая возможность",
+          "note.txt": "v2"
+        },
+        "head": "R",
+        "branch": "main",
+        "refs": {
+          "feature": "F",
+          "main": "R"
+        },
+        "nodes": [
+          {
+            "id": "A",
+            "parents": []
+          },
+          {
+            "id": "F",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "M",
+            "parents": [
+              "A"
+            ]
+          },
+          {
+            "id": "R",
+            "parents": [
+              "M",
+              "F"
+            ]
+          }
+        ],
+        "reachable": [
+          "R",
+          "M",
+          "F",
+          "A"
+        ]
+      }
+    ]
+  },
+  "regex": [
+    {
+      "id": "digits",
+      "label": "Цифры: \\d+",
+      "pattern": "\\d+",
+      "texts": [
+        "Номер 123, ещё 45",
+        "123",
+        "123abc",
+        "Нет цифр",
+        "Заказ ١٢٣"
+      ],
+      "cases": {
+        "0": {
+          "search": {
+            "span": [
+              6,
+              9
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          },
+          "match": null,
+          "fullmatch": null
+        },
+        "1": {
+          "search": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          },
+          "match": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          },
+          "fullmatch": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          }
+        },
+        "2": {
+          "search": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          },
+          "match": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "123",
+            "groups": [],
+            "named": {}
+          },
+          "fullmatch": null
+        },
+        "3": {
+          "search": null,
+          "match": null,
+          "fullmatch": null
+        },
+        "4": {
+          "search": {
+            "span": [
+              6,
+              9
+            ],
+            "text": "١٢٣",
+            "groups": [],
+            "named": {}
+          },
+          "match": null,
+          "fullmatch": null
+        }
+      }
+    },
+    {
+      "id": "word",
+      "label": "Слово и именованная группа",
+      "pattern": "(?P<word>\\w+)",
+      "texts": [
+        "Привет, мир!",
+        "🙂код42",
+        "abc",
+        ""
+      ],
+      "cases": {
+        "0": {
+          "search": {
+            "span": [
+              0,
+              6
+            ],
+            "text": "Привет",
+            "groups": [
+              "Привет"
+            ],
+            "named": {
+              "word": "Привет"
+            }
+          },
+          "match": {
+            "span": [
+              0,
+              6
+            ],
+            "text": "Привет",
+            "groups": [
+              "Привет"
+            ],
+            "named": {
+              "word": "Привет"
+            }
+          },
+          "fullmatch": null
+        },
+        "1": {
+          "search": {
+            "span": [
+              1,
+              6
+            ],
+            "text": "код42",
+            "groups": [
+              "код42"
+            ],
+            "named": {
+              "word": "код42"
+            }
+          },
+          "match": null,
+          "fullmatch": null
+        },
+        "2": {
+          "search": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "abc",
+            "groups": [
+              "abc"
+            ],
+            "named": {
+              "word": "abc"
+            }
+          },
+          "match": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "abc",
+            "groups": [
+              "abc"
+            ],
+            "named": {
+              "word": "abc"
+            }
+          },
+          "fullmatch": {
+            "span": [
+              0,
+              3
+            ],
+            "text": "abc",
+            "groups": [
+              "abc"
+            ],
+            "named": {
+              "word": "abc"
+            }
+          }
+        },
+        "3": {
+          "search": null,
+          "match": null,
+          "fullmatch": null
+        }
+      }
+    },
+    {
+      "id": "date",
+      "label": "Дата и три группы",
+      "pattern": "(\\d{2})\\.(\\d{2})\\.(\\d{4})",
+      "texts": [
+        "Дата 17.10.2026",
+        "17.10.2026",
+        "99.99.2026",
+        "Дата неизвестна"
+      ],
+      "cases": {
+        "0": {
+          "search": {
+            "span": [
+              5,
+              15
+            ],
+            "text": "17.10.2026",
+            "groups": [
+              "17",
+              "10",
+              "2026"
+            ],
+            "named": {}
+          },
+          "match": null,
+          "fullmatch": null
+        },
+        "1": {
+          "search": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "17.10.2026",
+            "groups": [
+              "17",
+              "10",
+              "2026"
+            ],
+            "named": {}
+          },
+          "match": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "17.10.2026",
+            "groups": [
+              "17",
+              "10",
+              "2026"
+            ],
+            "named": {}
+          },
+          "fullmatch": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "17.10.2026",
+            "groups": [
+              "17",
+              "10",
+              "2026"
+            ],
+            "named": {}
+          }
+        },
+        "2": {
+          "search": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "99.99.2026",
+            "groups": [
+              "99",
+              "99",
+              "2026"
+            ],
+            "named": {}
+          },
+          "match": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "99.99.2026",
+            "groups": [
+              "99",
+              "99",
+              "2026"
+            ],
+            "named": {}
+          },
+          "fullmatch": {
+            "span": [
+              0,
+              10
+            ],
+            "text": "99.99.2026",
+            "groups": [
+              "99",
+              "99",
+              "2026"
+            ],
+            "named": {}
+          }
+        },
+        "3": {
+          "search": null,
+          "match": null,
+          "fullmatch": null
+        }
+      }
+    }
+  ],
+  "pandas": {
+    "rows": [
+      {
+        "index": 10,
+        "city": "Москва",
+        "price": 100,
+        "qty": 2
+      },
+      {
+        "index": 20,
+        "city": "Казань",
+        "price": 200,
+        "qty": 1
+      },
+      {
+        "index": 30,
+        "city": "Москва",
+        "price": 300,
+        "qty": 3
+      },
+      {
+        "index": 40,
+        "city": "Казань",
+        "price": 400,
+        "qty": 2
+      }
+    ],
+    "choices": [
+      {
+        "id": "one20",
+        "label": "Одна строка: 20",
+        "value": 20
+      },
+      {
+        "id": "one1",
+        "label": "Одна строка: 1",
+        "value": 1
+      },
+      {
+        "id": "one4",
+        "label": "Одна строка: 4",
+        "value": 4
+      },
+      {
+        "id": "slice02",
+        "label": "Срез: 0:2",
+        "start": 0,
+        "end": 2
+      },
+      {
+        "id": "slice1030",
+        "label": "Срез: 10:30",
+        "start": 10,
+        "end": 30
+      }
+    ],
+    "selections": {
+      "loc|one20": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          }
+        ],
+        "error": null
+      },
+      "loc|one1": {
+        "rows": [],
+        "error": "KeyError"
+      },
+      "loc|one4": {
+        "rows": [],
+        "error": "KeyError"
+      },
+      "loc|slice02": {
+        "rows": [],
+        "error": null
+      },
+      "loc|slice1030": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "error": null
+      },
+      "iloc|one20": {
+        "rows": [],
+        "error": "IndexError"
+      },
+      "iloc|one1": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          }
+        ],
+        "error": null
+      },
+      "iloc|one4": {
+        "rows": [],
+        "error": "IndexError"
+      },
+      "iloc|slice02": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          }
+        ],
+        "error": null
+      },
+      "iloc|slice1030": {
+        "rows": [],
+        "error": null
+      }
+    },
+    "filters": {
+      "0|all|sum": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 600
+          },
+          {
+            "city": "Москва",
+            "price": 400
+          }
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "0|all|mean": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 300.0
+          },
+          {
+            "city": "Москва",
+            "price": 200.0
+          }
+        ],
+        "mask": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "0|Москва|sum": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 400
+          }
+        ],
+        "mask": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      "0|Москва|mean": {
+        "rows": [
+          {
+            "index": 10,
+            "city": "Москва",
+            "price": 100,
+            "qty": 2
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 200.0
+          }
+        ],
+        "mask": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      "0|Казань|sum": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 600
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      "0|Казань|mean": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      "150|all|sum": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 600
+          },
+          {
+            "city": "Москва",
+            "price": 300
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      "150|all|mean": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 300.0
+          },
+          {
+            "city": "Москва",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          true,
+          true
+        ]
+      },
+      "150|Москва|sum": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 300
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      "150|Москва|mean": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      "150|Казань|sum": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 600
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      "150|Казань|mean": {
+        "rows": [
+          {
+            "index": 20,
+            "city": "Казань",
+            "price": 200,
+            "qty": 1
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          true,
+          false,
+          true
+        ]
+      },
+      "250|all|sum": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 400
+          },
+          {
+            "city": "Москва",
+            "price": 300
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          true
+        ]
+      },
+      "250|all|mean": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          },
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 400.0
+          },
+          {
+            "city": "Москва",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          true
+        ]
+      },
+      "250|Москва|sum": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 300
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      "250|Москва|mean": {
+        "rows": [
+          {
+            "index": 30,
+            "city": "Москва",
+            "price": 300,
+            "qty": 3
+          }
+        ],
+        "groups": [
+          {
+            "city": "Москва",
+            "price": 300.0
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          true,
+          false
+        ]
+      },
+      "250|Казань|sum": {
+        "rows": [
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 400
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          false,
+          true
+        ]
+      },
+      "250|Казань|mean": {
+        "rows": [
+          {
+            "index": 40,
+            "city": "Казань",
+            "price": 400,
+            "qty": 2
+          }
+        ],
+        "groups": [
+          {
+            "city": "Казань",
+            "price": 400.0
+          }
+        ],
+        "mask": [
+          false,
+          false,
+          false,
+          true
+        ]
+      },
+      "450|all|sum": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "450|all|mean": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "450|Москва|sum": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "450|Москва|mean": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "450|Казань|sum": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "450|Казань|mean": {
+        "rows": [],
+        "groups": [],
+        "mask": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  "mocks": {
+    "success|-10": {
+      "actual": -10,
+      "error": null,
+      "calls": 1
+    },
+    "success|-9": {
+      "actual": -9,
+      "error": null,
+      "calls": 1
+    },
+    "success|-8": {
+      "actual": -8,
+      "error": null,
+      "calls": 1
+    },
+    "success|-7": {
+      "actual": -7,
+      "error": null,
+      "calls": 1
+    },
+    "success|-6": {
+      "actual": -6,
+      "error": null,
+      "calls": 1
+    },
+    "success|-5": {
+      "actual": -5,
+      "error": null,
+      "calls": 1
+    },
+    "success|-4": {
+      "actual": -4,
+      "error": null,
+      "calls": 1
+    },
+    "success|-3": {
+      "actual": -3,
+      "error": null,
+      "calls": 1
+    },
+    "success|-2": {
+      "actual": -2,
+      "error": null,
+      "calls": 1
+    },
+    "success|-1": {
+      "actual": -1,
+      "error": null,
+      "calls": 1
+    },
+    "success|0": {
+      "actual": 0,
+      "error": null,
+      "calls": 1
+    },
+    "success|1": {
+      "actual": 1,
+      "error": null,
+      "calls": 1
+    },
+    "success|2": {
+      "actual": 2,
+      "error": null,
+      "calls": 1
+    },
+    "success|3": {
+      "actual": 3,
+      "error": null,
+      "calls": 1
+    },
+    "success|4": {
+      "actual": 4,
+      "error": null,
+      "calls": 1
+    },
+    "success|5": {
+      "actual": 5,
+      "error": null,
+      "calls": 1
+    },
+    "success|6": {
+      "actual": 6,
+      "error": null,
+      "calls": 1
+    },
+    "success|7": {
+      "actual": 7,
+      "error": null,
+      "calls": 1
+    },
+    "success|8": {
+      "actual": 8,
+      "error": null,
+      "calls": 1
+    },
+    "success|9": {
+      "actual": 9,
+      "error": null,
+      "calls": 1
+    },
+    "success|10": {
+      "actual": 10,
+      "error": null,
+      "calls": 1
+    },
+    "error|-10": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-9": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-8": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-7": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-6": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-5": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-4": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-3": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-2": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|-1": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|0": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|1": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|2": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|3": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|4": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|5": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|6": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|7": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|8": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|9": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "error|10": {
+      "actual": null,
+      "error": "TimeoutError",
+      "calls": 2
+    },
+    "retry|-10": {
+      "actual": -10,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-9": {
+      "actual": -9,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-8": {
+      "actual": -8,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-7": {
+      "actual": -7,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-6": {
+      "actual": -6,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-5": {
+      "actual": -5,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-4": {
+      "actual": -4,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-3": {
+      "actual": -3,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-2": {
+      "actual": -2,
+      "error": null,
+      "calls": 2
+    },
+    "retry|-1": {
+      "actual": -1,
+      "error": null,
+      "calls": 2
+    },
+    "retry|0": {
+      "actual": 0,
+      "error": null,
+      "calls": 2
+    },
+    "retry|1": {
+      "actual": 1,
+      "error": null,
+      "calls": 2
+    },
+    "retry|2": {
+      "actual": 2,
+      "error": null,
+      "calls": 2
+    },
+    "retry|3": {
+      "actual": 3,
+      "error": null,
+      "calls": 2
+    },
+    "retry|4": {
+      "actual": 4,
+      "error": null,
+      "calls": 2
+    },
+    "retry|5": {
+      "actual": 5,
+      "error": null,
+      "calls": 2
+    },
+    "retry|6": {
+      "actual": 6,
+      "error": null,
+      "calls": 2
+    },
+    "retry|7": {
+      "actual": 7,
+      "error": null,
+      "calls": 2
+    },
+    "retry|8": {
+      "actual": 8,
+      "error": null,
+      "calls": 2
+    },
+    "retry|9": {
+      "actual": 9,
+      "error": null,
+      "calls": 2
+    },
+    "retry|10": {
+      "actual": 10,
+      "error": null,
+      "calls": 2
+    }
+  }
+}

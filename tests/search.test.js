@@ -48,3 +48,26 @@ test('snippet includes a match buried in a long explanation',()=>{
   const text='начало '.repeat(100)+'poetry-plugin-shell'+' конец'.repeat(100);
   assert(excerpt(text,'poetry-plugin-shell').includes('poetry-plugin-shell'));
 });
+test('expanded explanations, tables, demo captions and code are indexed',()=>{
+  for(const [query,id]of [['Copy-on-Write','filter'],['first = iter(items)','iterator'],
+    ['Возвращаемое значение','order'],['api()["value"]','mock'],['Локальная n','yield'],
+    ['Результат группировки','selection'],['Именованные группы','re-methods']]){
+    const hit=search(index,query).find(r=>r.topic.id===id);
+    assert(hit,query);assert(hit.snippet.toLowerCase().includes(query.toLowerCase()),query);
+  }
+});
+test('all 66 topics have worked notes and existing link IDs keep their order',()=>{
+  const ids=JSON.parse(readFileSync(new URL('./topic-ids.json',import.meta.url)));
+  assert.deepEqual(Object.fromEntries(data.lessons.map(l=>[l.id,l.topics.map(t=>t.id)])),ids);
+  const topics=data.lessons.flatMap(l=>l.topics);assert.equal(topics.length,66);
+  assert.deepEqual(topics.filter(t=>t.demo).map(t=>t.demo.type).sort(),['decorators','generator','git','mocks','pandas','regex']);
+  for(const lesson of data.lessons)for(const topic of lesson.topics){
+    assert(topic.blocks.some(b=>b.type==='paragraph'),`${lesson.id}/${topic.id}: explanation`);
+    assert(topic.blocks.some(b=>b.type==='example'),`${lesson.id}/${topic.id}: example`);
+    for(const block of topic.blocks.filter(b=>b.type==='link')){
+      const params=new URLSearchParams(block.href.slice(1));
+      const target=data.lessons.find(l=>l.id===params.get('lesson'))?.topics.find(t=>t.id===params.get('topic'));
+      assert(target?.demo,block.href);
+    }
+  }
+});

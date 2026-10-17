@@ -2,5 +2,5 @@
   "name": "python-notes",
   "private": true,
   "type": "module",
-  "scripts": {"test": "node --test tests/search.test.js"}
+  "scripts": {"test": "node --test tests/*.test.js"}
 }
